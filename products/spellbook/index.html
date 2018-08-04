@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spell Book Children Web Game</title>
+
+    <!----------------->
+    <!-- STYLE SHEET -->
+    <!----------------->
+    <link rel='stylesheet' href='stylesheets/index.css' />
+
+    <!----------------->
+    <!-- JavaScripts -->
+    <!----------------->
+    <!-- JQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+
+    <!-- Drawing Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.3/fabric.js"></script>
+
+    <!-- TensorFlow.js script -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>    
+
+    <!-- OCR  Library -->
+    <script src="javascripts/ocrad.js"></script>
+    <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
+
+    <!-- Game  Library -->
+    <script src="http://cdn.jsdelivr.net/npm/phaser@3.11/dist/phaser.min.js"></script>
+    
+    <!-- Custom  Library -->
+    <script src='javascripts/index.js'></script>
+
+  </head>
+  <body>
+
+    <!-- Header -->
+    <div class="game-header">
+      <div class="game-header-title"> Spell Book Children Web Game </div>
+    </div>
+
+    <div class="main-div">
+      <!-- Main Game -->
+      <div class="game-main-panel" id="game-main-panel">
+      </div>
+
+      <!-- Interface -->
+      <div class="game-interface-panel">
+	<div style="display:table-row">
+
+	  <!-- Spell Zone -->
+	  <div class="game-interface-spell">
+	    <canvas id="canvas-spell"></canvas>
+	    <div class="clear-button" id="clear-button-spell">
+	      Clear
+	    </div>
+	    <div  class="game-interface-result" id="result-txt-spell"></div>
+	  </div>
+
+	  <!-- Picture Zone -->
+	  <div class="game-interface-picture">
+	    <canvas id="canvas-drawing"></canvas>
+	    <div class="game-interface-result" id="result-txt-pic"></div>
+	    <div class="clear-button" id="clear-button-pic">
+	      Clear
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </body>
+</html>
