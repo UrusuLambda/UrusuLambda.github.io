@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas Drawing Fabric Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.3/fabric.js"></script>
+  </head>
+  <body>
+      <canvas id="canvas" style="border:solid 1px red" width="300" height="300"></canvas>
+      <script>
+        var canvas = new fabric.Canvas('canvas', {
+                isDrawingMode: true
+            });
+        fabric.Object.prototype.transparentCorners = false;
+        canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
+        canvas.freeDrawingBrush.color = "black";
+        canvas.freeDrawingBrush.width = 10;
+      </script>
+  </body>
+</html>
