@@ -17,7 +17,7 @@ var Simulater = function(){
         var webgl_util = new GLUtils();
 
         //Init Canvas and Canvas Context
-        webgl_util.createCanvas(800, 400);
+        webgl_util.createCanvas(window.innerWidth, window.innerHeight);
         webgl_util.registerCanvas(document.body);
         webgl_util.initGlContext(1, 0, 1);
         this.setupGlParams(webgl_util);
