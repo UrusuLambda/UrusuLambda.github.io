@@ -1,0 +1,291 @@
+<html>
+  <head>
+    <title>Thothnator - Urusu Lambda Laboratory -</title>
+    <meta name="description" content="Thothnator.ここではWeb上で文字認識、機械学習などを駆使しながら、敵を操って戦うWebミニゲームの製作を行っています.作業日誌みたいなものですので技術解説ページではありません.UrusuLambdaのいろいろ実験場.WebサービスやDeepLearing、ロボットなどのソースコードや実験を残していこうと思います.大したことないスニペット等も含んでいますが、ご了承ください.">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" async
+	    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123328586-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123328586-1');
+</script>
+
+  </head>
+  <body style="width:100%;height:100%;background-color:rgb(220, 220, 220);padding:0px;margin:0px;">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:black!important;color:white;">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a style="font-family: 'Kaushan Script', cursive;color:white;" class="nav-link" href="../index.html">ULL Top<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+    <div style="font-family: 'Kaushan Script', cursive;width:100%;height:50%;background-color:rgb(49, 50, 51);min-height:300px;">
+      <div style="text-align:center;width:100%;padding-top:100px;font-size:60px;color:white;font-weight:bold;">Thothnator</div>
+      <div style="text-align:center;width:100%;font-family: 'Kaushan Script', cursive;color:white;">Code for Very Simple Suggestion System through QandA. Under Development.</div>
+      
+      <div style="text-align:center;width:100%;font-family: 'Kaushan Script', cursive;color:white;">Github Page : <a href="https://github.com/UrusuLambda/Thothnator">https://github.com/UrusuLambda/thothnator</a></div>
+    </div>
+    <div>
+      <div class="container-fluid">
+      <div class="row">
+	<nav class="col-md-2 d-none d-md-block bg-light sidebar" style="background-color:transparent!important;">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="true" aria-controls="collapseExample1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                  What is it?
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  How? <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  Code <span class="sr-only">(current)</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" style="padding:0px;background-color:white;">
+	  <div id="accordion">
+	    <div class="card" style="border:none;">
+	      <div class="collapse show" id="collapseExample1" style="background-color:white;width:100%;height:100%;" data-parent="#accordion">
+		<div>
+		  <h1>What is This?</h1>
+		  <p>
+		    このコードはアキネーターのような提案システムをシンプルにして実現します.<br>
+		    しかし、まだ開発中です.
+		  </p>
+
+		  <p>
+		    This is code to try to implement something like Akinator.<br>
+		    But still now , under development.<br>
+		  </p>
+		</div>
+		
+		
+		Page : <a href="thothnator/index.html">Thothnator Demo</a>
+		<iframe  style="width:100%;height:500px;" src="thothnator/index.html"></iframe>
+		
+
+	      </div>
+	    </div>
+	    <div class="card" style="border:none;">
+	      <div class="collapse" id="collapseExample2" data-parent="#accordion">
+		<h1>How?</h1>
+		<div style="width:80%;margin:auto;">
+		  <p>No English Sorry</p>
+		  
+		  <div>
+		    <div style="margin:20px;">
+		      <h1 style="width:100%; text-align:center;margin:10px;">外部仕様</h1>
+		      <p>
+			だいぶシンプルです.
+		      </p>
+		      <ul>
+			<li>ユーザの入力はYes/Noのみ</li>
+			<li>YesとNoが答えにくい問題があることも想定(ただしYes.Noしか選べないことは変わらない.計算上ケアするのみ)</li>
+			<li>質問の繰り返しによって対象を絞っていく</li>
+		      </ul>
+		    </div>
+		    <div style="margin:20px;">
+		      <h1 style="width:100%; text-align:center;margin:10px;">内部動作</h1>
+		    <h2>▼仕組み</h2>
+		    <div>
+		      <p>
+			実際のところ、内部の仕組みについて、未検証な状態です.
+			ただなんとなく動いっているぽく見えるってところです.
+		      </p>
+		      
+		      <h3>全体流れ</h3>
+		      <p>
+			全体の流れは以下のように行なっています.
+			<div style="padding:20px;background-color:rgb(49, 50, 51);border-radius:10px;margin:10px;color:white;font-weight:bold;">
+			  1. 単語リストの確率を元に最もエントロピーの低くなる質問を選択<br>
+			  2. 質問を提示してユーザにYesとNoを選択してもらう<br>
+			  3. 選択に応じて単語リストの確率を更新<br>
+			  4. 特定の単語の確率が0.5を超えたら終了.超えてなければ1へ<br>
+			</div>
+			以下では、上の1と3についてやや詳しく記述しています.
+		      </p>
+
+		      <h3>必要な事前データ</h3>
+		      <p>
+		      このシステムを動かすには事前に幾らかの情報が必要になります.<br>
+		      質問と回答候補の単語と質問に対する各単語のYesとNoのデータです.<br>
+		      今回以下の情報を持つ構造体を持っています.
+		      <p>
+		      <div style="padding:20px;background-color:rgb(49, 50, 51);border-radius:10px;margin:10px;font-weight:bold;color:white;">
+			<ul>
+			  <li>質問Q</li>
+			  <li>単語W</li>
+			  <li>Yesの回数</li>
+			  <li>Noの回数</li>
+			</ul>
+		      </div>
+		      この構造体の情報から単語Wが答えだった場合に質問Qを受けてYと答える確率とNと答える確率が求められます.
+		      $$P(ans=y) = \frac{Y_{num}}{Y_{num} + N_{num}}, P(ans=n) = \frac{N_{num}}{Y_{num} + N_{num}}$$
+		      </p>
+		      </p>
+
+		      <h3>詳細な計算</h3>
+		      <p>
+			内容が合っている自信は全くないですが、念のため書いておきます.
+		      </p>
+		      <div style="padding:20px;">
+			<h5>確率の更新</h5>
+			<p>
+			  <div style="padding:20px;background-color:rgb(49, 50, 51);border-radius:10px;margin:10px;font-weight:bold;color:white;">
+			    \(W\):単語<br>
+			    \(A\):YesまたはNo<br>
+			    \(Q\):質問. 以下では式が複雑に見えるため、わざと書いていません.<br>
+			    \(QA_{history}\):今までの質問と今までのユーザのYesまたはNo<br>
+			    \(p(W)\) : 単語Wの確率<br>
+			    \(p(A|W,QA_{history})\) : 単語Wと過去のQAhistoryを与えられたときにAと答える確率.ただQAhistoryは実際関係なくp(A|W)です.<br>
+			    \(p(W|A,QA_{history})\) : Aと過去のQAhistoryを与えられたときに単語Wである確率<br>
+			  </div>
+			  
+			  <p>
+			  下記の式を更新しながら\(p(W|A,QA_{history})\)を見て、単語が分かったかどうかを判定します.
+			  $$p(W|A,QA_{history}) = \frac{p(A|W, QA_{history})p(W|QA_{history})}{p(A|QA_{history})}$$
+			  ここの左辺の値が各単語の確率です.判定はシンプルに最も確率が高い単語を選べばよいかと思います.確率が1になるまで計算はできないので、どこかで辞める必要があります.複数ある候補がある中で0.5の確率になったものはそこそこ正しいとして判定しました.<br>
+			  </p>
+			  <p>
+			    その左辺を計算するには、この右辺を当然計算する必要があります.
+			    それぞれの意味は以下のようになっています.
+			  </p>
+			  <div style="padding:20px;background-color:rgb(49, 50, 51);border-radius:10px;margin:10px;font-weight:bold;color:white;">
+			    \(p(A|W, QA_{history})\):これはあらかじめ調べている値です.前述の通りQAhistoryは関係なく、厳密に書くならp(A|W,Q)です.これはある単語とある質問のときにどのくらいYesと答えるかですが、これは事前データから計算します.<br>
+			    \(p(W|QA_{history})\):一つ前の質問のタイミングで求めた\(p(W|A, QA_{history})\)がこれです.<br>
+			    \(p(A|QA_{history})\):上の二つの分布の値を使って周辺化を行い求めます.<br>
+			    周辺化は
+			    $$p(A|QA_{history}) = \int_W p(A|W,QA_{history}) p(W|QA_{history})$$
+			  </div>
+			</p>
+		      </div>
+
+		      <div style="padding:20px;">
+			<h5>質問の選択</h5>
+			<p>
+			  次に質問の選択です.<br>
+			  ベースの考え方は決定木学習と同じはずです.<br>
+			</p>
+			
+			<p>
+			  質問の選択は、それぞれの質問をしたときに単語の確率分布がどのような分布に変わるかを想定して選びます.
+			  毎回の質問で、ある質問をして回答を得た時に最も候補が少なくなることが理想です.
+			  「最も候補が少なくなった状態」は「エントロピーが低い」ことによって表すことができます.
+			  エントロピーはあいまいさの指標であり、もう答えの確信を持っている状態はすなわちエントロピーが低い状態なのです.<br>
+			</p>
+			<p>
+			  <b>エントロピーの式</b>
+			  $$ H = \sum_{i=0}^n - p_i log_2(p_i)$$
+			</p>
+			<p>
+			例えば
+			  <div style="padding:20px;background-color:rgb(49, 50, 51);border-radius:10px;margin:10px;font-weight:bold;color:white;">
+			  赤の確率が1で青の確率が0で緑の確率が0とした場合エントロピーは0<br>
+			  赤の確率が0.5で青の確率が0.5で緑の確率が0とした場合エントロピーは1<br>
+			  赤の確率が0.3で青の確率が0.3で緑の確率が0.3とした場合エントロピーは1.584<br>
+			  </div>
+			  </p>
+			<p>
+			全くあてがつかないほど、値が大きくなっていることがわかるかと思います.
+			これを利用してどの質問をすればより候補を絞れるかの評価をします.<br>
+			今回は以下のような計算を行えばいいはずです.
+			</p>
+			$$H(W) = \sum_{i=0}^{n} - p(W|QA_{history}) log(p(W|QA_{history}))$$
+			<p>
+			もう一つ気にする点は、Yesを選択する場合とNoを選択する場合の両方をケアする必要があることです.
+			そこで、Yesと答える確率とNoと答える確率も考慮して計算をします.
+			</p>
+
+			<p>
+			上記のような通常のエントロピーではなく,Yesの場合とNoの場合を考慮した<a href="https://en.wikipedia.org/wiki/Conditional_entropy">条件付きエントロピー</a>で計算します.
+			計算の内容としては、それぞれの場合のエントロピーを計算して、加重平均を取るだけです.
+			より詳しくは、情報利得や決定木学習がキーワードになると思いますので、お調べください.
+			</p>
+			$$H(W|ANS) = \sum_{ans=yes,no}p(ANS=ans) (\sum_{i=0}^{n} - p(W|ans, QA_{history}) log(p(W|ans, QA_{history})))$$
+		      </div>
+		    </div>
+		    </div>
+		  </div>
+		  <br>
+		</div>
+	      </div>
+	    </div>
+	    
+	    <div class="card" style="border:none;">
+	      <div class="collapse" id="collapseExample3" style="background-color:white;width:100%;height:100%;" data-parent="#accordion">
+		<p>
+		  I put on Github.<br>
+		  <a href="https://github.com/UrusuLambda/Thothnator">UrusuLambda's Github</a><br>
+		  PythonとJavaScriptの両方で実装しました.
+		</p>
+		<div>
+		  <div style="padding:20px;background-color:rgb(49, 50, 51);border-radius:10px;margin:10px;font-weight:bold;color:white;">
+		  <h1>Code (Javascript)</h1>
+		  <p>
+		    そこまで複雑にはしていないですが, コードが汚いので読みにくいかもです.<br>
+		    表示のコードも混じってしまっているので、Pythonの方が何をしたいかがわかるかと思います.
+		  </p>
+		  </div>
+		  <p>
+		    <script src="http://gist-it.appspot.com/https://github.com/UrusuLambda/Thothnator/blob/master/thothnator.js"></script>
+		  </p>
+		</div>
+		
+		<div>
+		  <div style="padding:20px;background-color:rgb(49, 50, 51);border-radius:10px;margin:10px;font-weight:bold;color:white;">
+		  <h1>Code (Pythono)</h1>
+		  <p>
+		    CUIなのでよりシンプルにしています.
+		  </p>
+		  </div>
+		  <p>
+		    <script src="http://gist-it.appspot.com/https://github.com/UrusuLambda/Thothnator/blob/master/thothnator.py"></script>
+		  </p>
+		</div>		
+
+	      </div>
+	    </div>
+	      
+	  </div>
+	</main>
+      </div>
+      </div>
+    </div>
+</body>
+</html>
