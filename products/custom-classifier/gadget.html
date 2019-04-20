@@ -77,7 +77,8 @@ $(document).ready(function(){
 				if(err){
 				    alert(err);
 				}else{
-				    var cellimg = "<img style='object-fit:cover' width='100px' height='100px' src="+$("#target-img").src+"></img>";
+                                    var srcimg = $("#target-img").attr("src");
+				    var cellimg = "<img style='object-fit:cover' width='100px' height='100px' src=" + srcimg + "></img>";
 				    var cellresult = "<div style='color:red'>"+results[0].label+" : "+(results[0].confidence*100)+"%</div>";
 				    $("#result-table").append("<div style='display:table-row;'><div style='display:table-cell;width:150px;'>"+cellimg+"</div><div style='display:table-cell;vertical-align:middle;'>"+cellresult+"</div></div>");
 				}
