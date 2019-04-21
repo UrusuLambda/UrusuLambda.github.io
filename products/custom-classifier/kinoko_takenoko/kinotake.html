@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/ml5@0.2.3/dist/ml5.min.js" type="text/javascript"></script>
+    <title>Kinoko Takenoko Classifier - UrusuLambdaLaboratory</title>
+    <meta name="Description" content="これきのこ?これたけのこ?ってなる方のためのページ.100％正しいとは限りません.">
+    <link rel="shortcut icon" type="image/png" href="https://urusulambda.github.io/img/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+
+    <style>
+    html, body{
+    padding:0px;
+    margin:0px;
+    }
+    </style>
+
+  </head>
+  <body style="font-family: 'Kaushan Script', cursive;background-color:rgb(255, 244, 237);">
+   <div style="color:white;min-height:300px;padding:50px;text-align:center;background-color:rgb(255, 117, 20);box-shadow:0px 3px 3px rgba(0, 0, 0, 0.3)">
+     <a style="text-decoration:none;color:inherit" href="https://urusulambda.github.io/"><div style=";display: table;background-color:rgb(50, 50, 50);color:white;left:20px;top:20px;border-radius:1000px;width:50px;height:50px;"><div style="display: table-cell;vertical-align: middle;font-size:10px;font-weight:bold;">ULL Top</div></div></a>
+     <h1>きのことたけのこの画像識別</h1>
+     <div style="margin:10px auto;color:color(200, 200, 200);font-size:12px;">完全に識別することを保証するものではありません.利用によるいかなる責任も負いかねます.<br>
+       画像識別はあなたのマシンでのみ実行されます.見られたくないたけのこ画像やきのこ画像が世に公開されることはありません.
+     </div>
+     <div>
+       <a href="https://urusulambda.wordpress.com/"><img class="icon-img" width="80px" height="80px" style="border-radius:50%;border:solid 5px rgba(0, 0, 0, 0.5);margin:10px auto;" src="../../../img/favicon.png"></a>
+     </div>
+     <div style="color:black;">Urusu Lambda</div>
+   </div>
+   <div style="width:80%;margin:20px auto;background-color:white;border-radius:10px;padding:50px;text-align:center;">
+     <div style="color:rgb(100, 100, 100);margin:30px auto;">きのことたけのこを識別することが大方可能です.<br>
+       画像はどこにもアップロードされずにここで識別が完結するので、ご安心ください<br>
+       きのことたけのこ以外の画像を入れた場合はどのように反応するか保証されません.
+     </div>
+     <div class="suggest-knowledges-header" style="color:rgb(80, 80, 80);font-size:20px;">Status</div>
+     <div style="margin:20px auto;color:rgb(50, 50, 50);" id="status-log"></div>
+    <div>
+      <div style="margin:30px;">
+	<label id="select-img-label"
+	       style="border-radius:5px;background-color:rgb(255, 117, 20);color:white;cursor:pointer; width:200px;padding:20px;">画像を選択
+	  <input type="file" accept="image/*" name="imgfile" style="display:none" id="select-img-input">
+	</label>
+      </div>
+      <div id="result-table"></div>
+      <img class="classify-img" width="200px" height="200px"  src="" id="target-img"
+	   style="opacity:0;box-shadow:2px 2px 2px rgba(0, 0, 0, 0.2);object-fit:cover;margin:5px;"></img>
+    </div>
+    
+    </div>
+    <script>
+var statusdiv = document.getElementById("status-log");
+statusdiv.innerHTML = "モデルをロード中.";
+var imglabel = document.getElementById("select-img-label");
+
+imglabel.style.opacity = 0;
+
+function modelLoaded(){
+    statusdiv.innerHTML = "モデルのロード完了.<br>続いてパラメータをロード";
+
+    classifier.load("model.json", function(){
+	    statusdiv.innerHTML = "パラメータもロード完了.<br>以下にてきのこまたはたけのこの画像を洗濯してください.";
+	    imglabel.style.opacity = 1;
+	});
+}
+
+const featureExtractor = ml5.featureExtractor('MobileNet', modelLoaded);
+const classifier = featureExtractor.classification();
+
+$(document).ready(function(){
+	$("#select-img-input").on('change', function(e){
+		var tgt = e.target || window.event.srcElement,
+		    files = tgt.files;
+		
+		if (FileReader && files && files.length) {
+		    var fr = new FileReader();
+		    fr.onload = function () {
+			var timg = $("#target-img");
+			timg.attr("src", fr.result);
+			timg.css("opacity", 1);
+			
+			classifier.classify(timg[0], function(err, results){
+				if(err){
+				    alert(err);
+				}else{
+				    var cellresult = "<div>これは<b style='color:red'>"+results[0].label+"</b> ("+(results[0].confidence*100)+"%)</div>";
+				    $("#result-table").append(cellresult);
+				}
+			    });
+		    }
+		    fr.readAsDataURL(files[0]);
+		}
+	    });
+
+    });
+      
+
+    </script>
+  </body>
+</html>
