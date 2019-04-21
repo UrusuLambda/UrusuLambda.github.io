@@ -16,9 +16,11 @@ function modelLoaded(){
 trainbtn.onclick = function () {
     var lastPromise;
     var lis = $("#train-img-ul").children();
+    featureExtractor.numClasses = lis.length;
     for(var i = 0; i < lis.length; i++){
 	var childs = $("#train-img-zone"+(i+1)).children();
 	var classname = $("#train-img-classname"+(i+1)).val();
+
 
 	if(childs.length == 0){
 	    alert(classname+"クラスにはまだ画像がありません.少なくとも1枚は画像をおいてください.");
