@@ -1,0 +1,280 @@
+<head>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+  <script src="https://unpkg.com/ml5@0.2.3/dist/ml5.min.js" type="text/javascript"></script>
+
+  <title>Custom Classifier - UrusuLambdaLibrary</title>
+  <style>
+html, body{
+padding:0px;
+margin:0px;
+}
+.suggest-knowledge-zone{
+margin:30px auto 20px auto;
+border-radius: 30px;
+padding:20px;
+width:95%;
+background-color:white;
+}
+
+.suggest-knowledges-header{
+color:rgb(197, 44, 44);
+font-size:15px;
+font-weight:bold;
+text-align:left;
+font-family: cursive;
+padding:5px;
+}
+
+.suggest-knowledges{
+overflow-x:auto;
+overflow-y:hidden;
+white-space:nowrap;
+padding:10px;
+}
+
+.suggest-knowledge{
+margin:auto 10px;
+box-shadow:3px 3px 3px rgba(0, 0, 0, 0.2);
+background-color:white;
+height:100%;
+}
+
+.suggest-knowledge-panel{
+display:inline-block;
+box-shadow:3px 3px 3px rgba(0, 0, 0, 0.2);
+background-color:rgb(52, 56, 60);
+width:140px;
+height:182px;
+vertical-align:top;
+ white-space:normal;
+margin:5px;
+padding:3px;
+color:white;
+font-weight:bold;
+font-size:14px;
+text-align:center;
+}
+
+.not-used-in-update{
+background-color:gray;
+ }
+
+.icon-img{
+transition:all 0.4s;
+}
+
+.icon-img:hover{
+transform:scale(1.1);
+}
+
+.train-img-box{
+position:relative;
+width:300px;
+min-height:300px;
+border-radius:5px;
+border:solid 1px rgba(0, 0, 0, 0.1);
+box-shadow:2px 2px 2px rgba(0, 0, 0, 0.1);
+text-align:center;
+
+}
+
+.image-select-btn{
+color:white;
+font-weight:bold;
+font-size:20px;
+background-color:rgb(207, 64, 49);
+border:none;
+padding:10px 40px;
+cursor:pointer;
+bottom:10px;
+width:60%;
+left:7%;
+position:absolute;
+margin:auto;
+}
+
+.input-class-name{
+margin:auto;
+border-radius:5px;
+height:30px;
+text-align:center;
+border:none;
+box-shadow:3px 3px 3px rgba(0, 0, 0, 0.2);
+position:absolute;
+top:-15px;
+width:60%;
+left:20%;
+}
+
+.train-img-zone{
+width:100%;
+text-align:center;
+padding:5px;
+}
+
+.train-btn{
+color:white;
+font-weight:bold;
+font-size:20px;
+background-color:rgb(207, 64, 49);
+border:none;
+padding:10px 40px;
+cursor:pointer;
+width:60%;
+margin:30px auto;
+}
+
+
+   </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+
+ </head>
+ <body style="font-family: 'Kaushan Script', cursive;background-color:rgb(255, 244, 237);">
+   <div style="color:white;min-height:300px;padding:50px;text-align:center;background-color:rgb(255, 117, 20);box-shadow:0px 3px 3px rgba(0, 0, 0, 0.3);">
+     <h1 style="font-size:108px;margin:auto;;text-align:center;">Custom Classifier</h1>
+     <div style="width:100%; text-align:center;color:rgb(255, 255, 255);">
+       あなただけの画像識別人工知能を!お手軽に!<br>
+       画像をアップロードしてカテゴリを推定させましょう.<br>
+       学習した識別器を他で利用するコードも提供します.<br>
+     </div>
+
+     <div>
+       <a href="https://urusulambda.wordpress.com/"><img class="icon-img" width="80px" height="80px" style="border-radius:50%;border:solid 5px rgba(0, 0, 0, 0.5);margin:10px auto;" src="../../img/favicon.png"></a>
+     </div>
+     <div style="color:black;">Urusu Lambda</div>
+   </div>
+   
+   <div style="width:70%;margin:20px auto;text-align:center;">  
+     <div class="suggest-knowledge-zone" style="">
+       <h4><span id="loading">Loading base model...</span> </h4>
+       <p style="color:gray;font-size:10px;">この学習では<a href="https://github.com/ml5js" style="text-decoration:none; color:inherit">ml5.js</a>を使用しています.</p>
+       <div class="suggest-knowledges-header" style="color:rgb(80, 80, 80);font-size:20px;">Choose Target Images</div>
+       <div style="width:100%; text-align:center;color:rgb(100, 100, 100);">
+	 まず、識別できるようになりたい画像を選択してそれぞれの画像の名前を入力します.
+       </div>
+       <ul style="list-style-type: none;" id="train-img-ul">
+	 <li style="display: inline-block;">
+	   <div class="suggest-knowledges" id="suggest-knowledges-raw">
+	     <div style="padding:10px;">
+	       <div class="train-img-box">
+		 <input class="input-class-name" placeholder="ここに何の画像か書いてください" id="train-img-classname1">
+		 <div class="train-img-zone" id="train-img-zone1">
+		   
+		 </div>
+		 <label class="image-select-btn">画像を選択<input type="file" accept="image/*" name="imgfile" style="display:none" linktag="train-img-zone1" class="mainImageInput" multiple></label>
+	       </div>
+	     </div>
+	   </div>
+	 </li>
+	 <li style="display: inline-block;">
+	   <div class="suggest-knowledges" id="suggest-knowledges-raw">
+	     <div style="padding:10px;">
+	       <div class="train-img-box">
+		 <input class="input-class-name" placeholder="ここに何の画像か書いてください"  id="train-img-classname2">
+		 <div class="train-img-zone" id="train-img-zone2">
+		   
+		 </div>
+		 <label class="image-select-btn">画像を選択<input type="file" accept="image/*" name="imgfile" style="display:none" linktag="train-img-zone2" class="mainImageInput" multiple></label>
+	       </div>
+	     </div>
+	   </div>
+	 </li>
+       </ul>
+
+
+     <div class="suggest-knowledges-header" style="color:rgb(80, 80, 80);font-size:20px;">Training or Load</div>
+     <div style="width:100%; text-align:center;color:rgb(100, 100, 100);margin:auto;">
+       次に、上で指定した画像を使用して、あなたの識別器を学習します.<br>
+       学習が終わるまでしばらくお待ちください.
+       <div id="train-btn" class="train-btn">学習開始</div>
+       <p style="text-align:center;margin:auto;">
+	 学習経過を表示します.
+	 <div style="text-align:center;border-radius:5px;width:50%;background-color:rgb(51, 50, 49);margin:auto;color:white;padding:10px;">
+	   <span id="loss">学習はまだ行われていません.</span>
+	 </div>
+       </p>
+       <div style="height:0px;border:solid 1px gray;width:80%;margin:10px auto;"></div>
+       学習したファイルを前回保存していれば、再利用可能です.<br>
+       初めての場合は、ここは飛ばしてください.<br>
+       保存した.jsonファイルおよび.binファイルを持っていれば以下で<b>両方とも</b>指定してください.
+       <br>
+       <div style="width:80%;margin:auto;padding:20px;">
+	 <label class="train-btn" style="margin:40px auto;width:400px;padding:10px 200px;">ロード<input type="file" accept=".json,.bin" name="jsonfile" style="display:none"  id="load-btn"  multiple></label>
+	 <div id="load-status" style="margin:20px auto;">
+	 </div>
+       </div>
+     </div>
+
+
+     <div class="suggest-knowledges-header" style="color:rgb(80, 80, 80);font-size:20px;">Test</div>
+     <div style="width:100%; text-align:center;color:rgb(100, 100, 100);margin:auto;">
+       学習した識別器が正しく動くかを確認します.<br>
+       正しいかどうかを確認したい画像を選んでください.<br>
+       思ったようにならなかった場合は、上の学習画像を増やして再度試してください<br>
+       <div class="suggest-knowledges" id="suggest-knowledges-raw">
+	 <div style="padding:10px;">
+	   <div class="train-img-box" style="margin:auto;width:70%;min-height:200px;">
+	     <div class="train-img-zone" id="train-img-zone0">       
+	     </div>
+	     <label style="left:13%" class="image-select-btn">画像を選択<input type="file" accept="image/*" name="imgfile" style="display:none" linktag="train-img-zone0" class="mainImageInput" multiple></label>
+	   </div>
+	 </div>
+       </div>
+       <div id="test-btn" class="train-btn">検証開始</div>
+       <div style="background-color:rgb(251, 240, 240);border-radius:10px;padding:10px;margin:10px auto;width:70%;text-align:center;">
+	 <div style="display:table;width:100%;" id="result-table">
+	 </div>
+       </div>
+     </div>
+     
+     <div class="suggest-knowledges-header" style="color:rgb(80, 80, 80);font-size:20px;">Save</div>
+     <div style="width:100%; text-align:center;color:rgb(100, 100, 100);margin:auto;">
+       他の人でも使えるように、または自分のブログやサイトで使えるように保存しましょう.<br>
+       もう一度学習することなく使うことができます.<br>
+       jsonファイルおよびbinファイル両方とも大事に保管してください.<br>
+       ブログや他サイトで使うには、jsonファイル,binファイル,下記のソースコードが必要です.
+       <div id="save-btn" class="train-btn">保存</div>
+     </div>
+
+     <a href="https://twitter.com/share?url=https://urusulambda.github.io/products/custom-classifier/index.html&via=urusulambda&related=twitterapi,twitter&hashtags=CustomClassifier" target="_blank"><div style="margin:auto;width:200px;background-color:rgb(51, 50, 49); color:white;font-weight:bold;border-radius:10000px;padding:10px;font-size:20px;cursor:pointer;">このサイトについてツイートする</div></a>
+
+     <h2>実装例</h2>
+     <div>
+       <p>
+	 保存したjsonファイルとbinファイルをサーバで同じディレクトリにおいてください.<br>
+	 <b>jsonファイルを開いてそこに書かれている".model.weights.bin"ファイルにそのファイルへのURLを書いてください.ただしドメインはなしです.</b>
+	 例えば,http://urusulambda.github.io/aaa/bbb/model.weights.binに置いた場合は、aaa/bbb/model.weights/binとしてください.
+       </p>
+       <p>
+	 以下のコードを参考に使用してください.
+	 まずheadには以下を貼り付けてください.
+       </p>
+       <script src="https://gist.github.com/UrusuLambda/f4c243d0c8e42fc1fb781913914e9413.js"></script>
+       <p>
+	 また、本文のどこかに以下のHTMLおよびjsコードを貼り付けてください.
+       </p>
+       <script src="https://gist.github.com/UrusuLambda/943e7bf6887600ae8ad687a45ce32f4a.js"></script>
+     </div>
+
+
+     <h2>実装例を使った例</h2>
+     <div>
+       <div style="font-size:10px;color:gray;">あくまで例です.他の使い方もできます.</div>
+       <iframe src="gadget.html" width="300px" height="300px">
+       </iframe>
+     </div>
+
+     </div>
+
+     </div>
+  
+  <script src="index.js"></script>
+
+  </div>
+
+</body>
