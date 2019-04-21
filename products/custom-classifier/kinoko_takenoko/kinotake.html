@@ -58,7 +58,7 @@ function modelLoaded(){
     statusdiv.innerHTML = "モデルのロード完了.<br>続いてパラメータをロード";
 
     classifier.load("model.json", function(){
-	    statusdiv.innerHTML = "パラメータもロード完了.<br>以下にてきのこまたはたけのこの画像を洗濯してください.";
+	    statusdiv.innerHTML = "パラメータもロード完了.<br>以下にてきのこまたはたけのこの画像を選択してください.";
 	    imglabel.style.opacity = 1;
 	});
 }
