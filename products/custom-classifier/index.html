@@ -135,7 +135,8 @@ margin:30px auto;
 
  </head>
  <body style="font-family: 'Kaushan Script', cursive;background-color:rgb(255, 244, 237);">
-   <div style="color:white;min-height:300px;padding:50px;text-align:center;background-color:rgb(255, 117, 20);box-shadow:0px 3px 3px rgba(0, 0, 0, 0.3);">
+   <div style="color:white;min-height:300px;padding:50px;text-align:center;background-color:rgb(255, 117, 20);box-shadow:0px 3px 3px rgba(0, 0, 0, 0.3)">
+     <a style="text-decoration:none;color:inherit" href="https://urusulambda.github.io/"><div style=";display: table;background-color:rgb(50, 50, 50);color:white;left:20px;top:20px;border-radius:1000px;width:50px;height:50px;"><div style="display: table-cell;vertical-align: middle;font-size:10px;font-weight:bold;">ULL Top</div></div></a>
      <h1 style="font-size:108px;margin:auto;;text-align:center;">Custom Classifier</h1>
      <div style="width:100%; text-align:center;color:rgb(255, 255, 255);">
        あなただけの画像識別人工知能を!お手軽に!<br>
@@ -241,13 +242,14 @@ margin:30px auto;
        <div id="save-btn" class="train-btn">保存</div>
      </div>
 
-     <a href="https://twitter.com/share?url=https://urusulambda.github.io/products/custom-classifier/index.html&via=urusulambda&related=twitterapi,twitter&hashtags=CustomClassifier" target="_blank"><div style="margin:auto;width:200px;background-color:rgb(51, 50, 49); color:white;font-weight:bold;border-radius:10000px;padding:10px;font-size:20px;cursor:pointer;">このサイトについてツイートする</div></a>
+     <a style="color:inherit;text-decoration:none;" href="https://twitter.com/share?url=https://urusulambda.github.io/products/custom-classifier/index.html&via=urusulambda&related=twitterapi,twitter&hashtags=CustomClassifier" target="_blank"><div style="margin:auto;width:400px;background-color:rgb(51, 50, 49); color:white;font-weight:bold;border-radius:10000px;padding:10px;font-size:20px;cursor:pointer;">このサイトについてツイートする</div></a>
 
-     <h2>実装例</h2>
-     <div>
+
+     <div class="suggest-knowledges-header" style="color:rgb(80, 80, 80);font-size:20px;">Example</div>
+     <div style="width:80%;margin:auto;text-align:center;color:rgb(100, 100, 100);">
        <p>
 	 保存したjsonファイルとbinファイルをサーバで同じディレクトリにおいてください.<br>
-	 <b>jsonファイルを開いてそこに書かれている".model.weights.bin"ファイルにそのファイルへのURLを書いてください.ただしドメインはなしです.</b>
+	 <b>jsonファイルを開いてそこに書かれている".model.weights.bin"ファイルにそのファイルへのURLを書いてください.ただしドメインはなしです.</b><br>
 	 例えば,http://urusulambda.github.io/aaa/bbb/model.weights.binに置いた場合は、aaa/bbb/model.weights/binとしてください.
        </p>
        <p>
@@ -262,10 +264,12 @@ margin:30px auto;
      </div>
 
 
-     <h2>実装例を使った例</h2>
+     <h2>Exampleを使った例</h2>
      <div>
        <div style="font-size:10px;color:gray;">あくまで例です.他の使い方もできます.</div>
-       <iframe src="gadget.html" width="300px" height="300px">
+       <div>イグアナとペンギンの識別</div>
+       <div style="color:gray;font-size:10px;margin:auto;text-align:center;">イグアナまたはペンギンの画像を用意して選択してください</div>
+       <iframe src="gadget.html" width="300px" height="300px" style="border: solid 1px rgb(100, 80, 60);">
        </iframe>
      </div>
 
