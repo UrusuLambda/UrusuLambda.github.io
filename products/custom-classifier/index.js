@@ -85,7 +85,7 @@ $(document).ready(function(){
 			    (function(){
 				var fr = new FileReader();
 				fr.onload = function () {
-				    $("#"+inputtag).append("<img style='box-shadow:2px 2px 2px rgba(0, 0, 0, 0.2);object-fit:cover;margin:5px;' width='50px' height='50px' src='"+fr.result+"'></img>");
+				    $("#"+inputtag).append("<img class='img-thumb' width='50px' height='50px' src='"+fr.result+"'></img>");
 				}
 				fr.readAsDataURL(files[i]);
 			    })();

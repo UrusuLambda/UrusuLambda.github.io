@@ -129,9 +129,12 @@ left:20%;
 }
 
 .train-img-zone{
-width:100%;
-text-align:center;
-padding:5px;
+width: 90%;
+text-align: center;
+padding: 5px;
+margin: auto;
+height: 350px;
+overflow-y: scroll;
 }
 
 .train-btn{
@@ -146,6 +149,13 @@ width:60%;
 margin:30px auto;
 }
 
+
+.img-thumb{
+box-shadow:2px 2px 2px rgba(0, 0, 0, 0.2);
+object-fit:cover;
+margin:5px 8px;
+float:left;
+}
 
    </style>
 
@@ -238,7 +248,7 @@ margin:30px auto;
        <div class="suggest-knowledges" id="suggest-knowledges-raw">
 	 <div style="padding:10px;">
 	   <div class="train-img-box" style="margin:auto;width:70%;min-height:200px;">
-	     <div class="train-img-zone" id="train-img-zone0">       
+	     <div class="train-img-zone" id="train-img-zone0" style="height:150px;">       
 	     </div>
 	     <label style="left:13%" class="image-select-btn">画像を選択<input type="file" accept="image/*" name="imgfile" style="display:none" linktag="train-img-zone0" class="mainImageInput" multiple></label>
 	   </div>
