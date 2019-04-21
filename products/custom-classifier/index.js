@@ -89,7 +89,6 @@ addcatebtn.onclick = function(){
 
 $(document).ready(function(){
 	$(document).on("change", ".mainImageInput", function(e){
-		console.log("hey");
 		var tgt = e.target || window.event.srcElement,
 		    files = tgt.files;
 		var inputtag = $(this).attr("linktag");

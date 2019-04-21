@@ -1,0 +1,200 @@
+<head>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+  <meta name="Description" content="画像をアップロードすると東方のどのキャラクタかを当てます.全てのキャラクタは網羅していませんので、悪しからず.">
+  <script src="https://unpkg.com/ml5@0.2.3/dist/ml5.min.js" type="text/javascript"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
+
+  <title>東方識別器</title>
+  <style>
+
+.icon-img{
+transition:all 0.4s;
+}
+
+.icon-img:hover{
+transform:scale(1.1);
+}
+
+
+.suggest-knowledge-zone{
+margin:30px auto 20px auto;
+border-radius: 30px;
+padding:20px;
+width:95%;
+background-color:white;
+}
+
+.suggest-knowledges-header{
+color:rgb(197, 44, 44);
+font-size:15px;
+font-weight:bold;
+text-align:left;
+font-family: cursive;
+padding:5px;
+}
+
+.suggest-knowledges{
+overflow-x:auto;
+overflow-y:hidden;
+white-space:nowrap;
+}
+
+.suggest-knowledge{
+margin:auto 10px;
+box-shadow:3px 3px 3px rgba(0, 0, 0, 0.2);
+background-color:white;
+height:100%;
+}
+
+
+.toho-classifier-cell{
+width:120px;
+font-size:90px;
+padding:10px;
+text-align:center;
+vertical-align:middle;
+#border:solid 1px rgb(0, 0, 0, 0.5);
+font-weight:bold;
+background-color:white;
+}
+
+html,body{
+padding:0px;margin:0px;
+width:100%;
+}
+
+   </style>
+
+ </head>
+ <body style="">
+   <div style="width:100%;background-color:rgb(51, 50, 49);margin:0px;padding:0px;margin:0px auto;box-shadow:0px 5px 5px rgba(0, 0, 0, 0.4);">
+   <div style="font-family: 'Noto Serif JP', serif; display:table;margin:0px auto;border: none;">
+     <div style="display:table-row;">
+       <div style="display:table-cell;" class="toho-classifier-cell">
+	 東
+       </div>
+       <div style="display:table-cell;background-color:rgb(51, 50, 49);" class="toho-classifier-cell">
+       </div>
+       <div style="display:table-cell" class="toho-classifier-cell">
+	 識
+       </div>
+       <div style="display:table-cell;background-color:rgb(51, 50, 49);" class="toho-classifier-cell">
+       </div>
+       <div style="display:table-cell" class="toho-classifier-cell">
+	 器
+       </div>
+     </div>
+     <div style="display:table-row">
+       <div style="display:table-cell;background-color:rgb(51, 50, 49);text-align:center;" class="toho-classifier-cell">
+	 <a style="text-decoration:none;color:inherit" href="https://urusulambda.github.io/"><div style=";display: table;background-color:white;color:rgb(50, 50, 50);margin:auto;;border-radius:1000px;width:80px;height:80px;"><div style="text-align:center;display: table-cell;vertical-align: middle;font-size:16px;font-weight:bold;">ULL Top</div></div></a>
+       </div>
+       <div style="color:white;background-color:red;display:table-cell" class="toho-classifier-cell">
+	 方
+       </div>
+       <div style="display:table-cell;background-color:rgb(51, 50, 49);" class="toho-classifier-cell">
+	 <div style="color:color;font-size:16px;color:white;">Urusu<br>Lambda</div>
+       </div>
+       <div style="display:table-cell" class="toho-classifier-cell">
+	 別
+       </div>
+       <div style="display:table-cell;background-color:rgb(51, 50, 49);" class="toho-classifier-cell">
+	 <div>
+	   <a href="https://urusulambda.wordpress.com/"><img class="icon-img" width="80px" height="80px" style="border-radius:50%;border:solid 5px rgba(0, 0, 0, 0.5);margin:10px auto;" src="../../img/favicon.png"></a>
+	 </div>
+       </div>
+     </div>
+   </div>
+   </div>
+   <!--h1 style="margin:auto;width:100%;text-align:center;">Toho Classifier</h1-->
+   <div style="width:80%; margin:auto;text-align:center;">
+   <div style="width:100%; text-align:center;margin:30px auto;color:rgb(50, 50, 50);font-weight:bold;">
+     画像をアップロードしていただくと下記キャラクタを推定します.<br>
+     間違えることもあるためご容赦を.ご利用による損失のいかなる責任も負いかねます.<br>
+     このような画像識別器は以下のサイトに作成することができます.
+     <div style="maring:10px auto;">
+       <a style="text-decoration:none;color:inherit" href="https://urusulambda.github.io/products/custom-classifier/multiple-ver.html">https://urusulambda.github.io/products/custom-classifier/multiple-ver.html</a>
+     </div>
+   </div>
+  <div class="suggest-knowledge-zone" style="">
+    <div class="suggest-knowledges-header">識別訓練済みキャラクター(20キャラ)</div>
+    <div style="width:70%;margin:20px auto;text-align:center;">
+      博麗霊夢,霧雨魔理沙,十六夜咲夜,レミリア・スカーレット,フランドール・スカーレット,<br>
+      チルノ,アリス・マーガトロイド,魂魄妖夢,西行寺幽々子,八雲紫,鈴仙・優曇華院・イナバ,<br>
+      八意永琳,射命丸文,古明地こいし,鬼人正邪,クラウンピース,洩矢諏訪子,比那名居天子,<br>
+      蓬莱山輝夜,依神紫苑
+    </div>
+  </div>
+  
+  <div class="suggest-knowledges-header" style="color:rgb(80, 80, 80);font-size:20px;">Status</div>
+  <div style="margin:20px auto;color:rgb(50, 50, 50);" id="status-log"></div>
+
+      <div>
+      <div style="margin:30px;">
+	<label id="select-img-label"
+	       style="border-radius:5px;background-color:rgb(255, 117, 20);color:white;cursor:pointer; width:200px;padding:20px;">画像を選択
+	  <input type="file" accept="image/*" name="imgfile" style="display:none" id="select-img-input">
+	</label>
+      </div>
+      <div id="result-table"></div>
+      <img class="classify-img" width="200px" height="200px"  src="" id="target-img"
+	   style="opacity:0;box-shadow:2px 2px 2px rgba(0, 0, 0, 0.2);object-fit:cover;margin:5px;"></img>
+    </div>
+
+  </div>
+  
+    <script>
+var statusdiv = document.getElementById("status-log");
+statusdiv.innerHTML = "モデルをロード中.";
+var imglabel = document.getElementById("select-img-label");
+
+imglabel.style.opacity = 0;
+
+function modelLoaded(){
+    statusdiv.innerHTML = "モデルのロード完了.<br>続いてパラメータをロード";
+
+    classifier.load("model2.json", function(){
+	    statusdiv.innerHTML = "パラメータもロード完了.<br>以下にて東方キャラクターの画像を選択してください.";
+	    imglabel.style.opacity = 1;
+	});
+}
+
+const featureExtractor = ml5.featureExtractor('MobileNet', modelLoaded);
+const classifier = featureExtractor.classification();
+
+$(document).ready(function(){
+	$("#select-img-input").on('change', function(e){
+		var tgt = e.target || window.event.srcElement,
+		    files = tgt.files;
+		
+		if (FileReader && files && files.length) {
+		    var fr = new FileReader();
+		    fr.onload = function () {
+			var timg = $("#target-img");
+			timg.attr("src", fr.result);
+			timg.css("opacity", 1);
+			
+			classifier.classify(timg[0], function(err, results){
+				if(err){
+				    alert(err);
+				}else{
+				    var cellresult = "<div>これは<b style='color:red'>"+results[0].label+"</b> ("+(results[0].confidence*100)+"%)</div>";
+				    $("#result-table").append(cellresult);
+				}
+			    });
+		    }
+		    fr.readAsDataURL(files[0]);
+		}
+	    });
+
+    });
+      
+
+    </script>
+
+
+</body>
