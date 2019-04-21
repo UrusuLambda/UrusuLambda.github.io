@@ -32,6 +32,8 @@ trainbtn.onclick = function () {
 	}
     }
 
+    loss.innerHTML = 'Loading Img to Classifier... 画像を読み込んでいます. ' + totalLoss;
+
     lastPromise.then(classifier => classifier.train(function(lossValue) {
 	    if (lossValue) {
 		totalLoss = lossValue;
@@ -74,7 +76,7 @@ testbtn.onclick = function(){
     }
 };
 
-var category_box_index = 2;
+var category_box_index = 3;
 
 addcatebtn.onclick = function(){
     var new_li = "<li style='display: inline-block;'><div class='suggest-knowledges' id='suggest-knowledges-raw'><div style='padding:10px;'><div class='train-img-box'><input class='input-class-name' placeholder='ここに何の画像か書いてください' id='train-img-classname"+category_box_index+"'><div class='train-img-zone' id='train-img-zone"+category_box_index+"'></div><label class='image-select-btn'>画像を選択<input type='file' accept='image/*' name='imgfile' style='display:none' linktag='train-img-zone"+category_box_index+"' class='mainImageInput' multiple></label></div></div></div></li>";
@@ -86,7 +88,8 @@ addcatebtn.onclick = function(){
 
 
 $(document).ready(function(){
-	$(".mainImageInput").on('change', function(e){
+	$(document).on("change", ".mainImageInput", function(e){
+		console.log("hey");
 		var tgt = e.target || window.event.srcElement,
 		    files = tgt.files;
 		var inputtag = $(this).attr("linktag");
