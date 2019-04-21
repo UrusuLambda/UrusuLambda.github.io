@@ -2,6 +2,7 @@ var trainbtn = document.getElementById('train-btn');
 var loss = document.getElementById('loss');
 var savebtn = document.getElementById('save-btn');
 var testbtn = document.getElementById('test-btn');
+var addcatebtn = document.getElementById('add-cate-btn');
 let totalLoss = 0;
 
 const featureExtractor = ml5.featureExtractor('MobileNet', modelLoaded);
@@ -72,6 +73,17 @@ testbtn.onclick = function(){
 	})();
     }
 };
+
+var category_box_index = 2;
+
+addcatebtn.onclick = function(){
+    var new_li = "<li style='display: inline-block;'><div class='suggest-knowledges' id='suggest-knowledges-raw'><div style='padding:10px;'><div class='train-img-box'><input class='input-class-name' placeholder='ここに何の画像か書いてください' id='train-img-classname"+category_box_index+"'><div class='train-img-zone' id='train-img-zone"+category_box_index+"'></div><label class='image-select-btn'>画像を選択<input type='file' accept='image/*' name='imgfile' style='display:none' linktag='train-img-zone"+category_box_index+"' class='mainImageInput' multiple></label></div></div></div></li>";
+
+    $("#train-img-ul").append(new_li);
+    category_box_index++;
+
+};
+
 
 $(document).ready(function(){
 	$(".mainImageInput").on('change', function(e){
