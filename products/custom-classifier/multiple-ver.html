@@ -137,6 +137,10 @@ height: 350px;
 overflow-y: scroll;
 }
 
+.img-zone-toggle{
+display:none;
+}
+
 .train-btn{
 color:white;
 font-weight:bold;
@@ -175,6 +179,10 @@ transition:all 0.3s;
 transform:scale(1.1);
 }
 
+
+.hide-mode{
+background-color:gray;
+}
    </style>
 
   <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
@@ -207,6 +215,8 @@ transform:scale(1.1);
 	 ADDを押すと識別するカテゴリを増やすことができます.
        </div>
        <div class="add-cate" id="add-cate-btn"><div style="margin:10px;vertical-align:middle;display:table-cell;">ADD</div></div>
+       <div style="text-align:center;color:rgb(100, 100, 100);margin:20px auto;font-size:12px;">画像が多い場合は表示が重くなるため以下のボタンで非表示にしてください.</div>
+       <div class="add-cate" id="display-toggle-btn"><div style="margin:10px;vertical-align:middle;display:table-cell;font-size:14px;">SHOW</div></div>
        <ul style="list-style-type: none;" id="train-img-ul">
 	 <li style="display: inline-block;">
 	   <div class="suggest-knowledges" id="suggest-knowledges-raw">
@@ -216,7 +226,7 @@ transform:scale(1.1);
 		 <div class="train-img-zone" id="train-img-zone1">
 		   
 		 </div>
-		 <label class="image-select-btn">画像を選択<input type="file" accept="image/*" name="imgfile" style="display:none" linktag="train-img-zone1" class="mainImageInput" multiple></label>
+		 <label class="image-select-btn"><div>画像を選択</div><input type="file" accept="image/*" name="imgfile" style="display:none" linktag="train-img-zone1" class="mainImageInput" multiple></label>
 	       </div>
 	     </div>
 	   </div>
@@ -229,7 +239,7 @@ transform:scale(1.1);
 		 <div class="train-img-zone" id="train-img-zone2">
 		   
 		 </div>
-		 <label class="image-select-btn">画像を選択<input type="file" accept="image/*" name="imgfile" style="display:none" linktag="train-img-zone2" class="mainImageInput" multiple></label>
+		 <label class="image-select-btn"><div>画像を選択</div><input type="file" accept="image/*" name="imgfile" style="display:none" linktag="train-img-zone2" class="mainImageInput" multiple></label>
 	       </div>
 	     </div>
 	   </div>
@@ -240,7 +250,12 @@ transform:scale(1.1);
      <div class="suggest-knowledges-header" style="color:rgb(80, 80, 80);font-size:20px;">Training or Load</div>
      <div style="width:100%; text-align:center;color:rgb(100, 100, 100);margin:auto;">
        次に、上で指定した画像を使用して、あなたの識別器を学習します.<br>
-       学習が終わるまでしばらくお待ちください.
+       学習が終わるまでしばらくお待ちください.<br>
+       調整できるパラメータ(隠れ層の数, エポック数)を以下に用意しておきます.
+       <div style="padding:20px; text-align:center;margin:auto;">
+	 <input id="hiddenUnits" type="number" placeholder="隠れ層の数" value="200">
+	 <input id="epochs" type="number" placeholder="計算回数数" value="100">
+       </div>
        <div id="train-btn" class="train-btn">学習開始</div>
        <p style="text-align:center;margin:auto;">
 	 学習経過を表示します.

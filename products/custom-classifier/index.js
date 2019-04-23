@@ -3,6 +3,7 @@ var loss = document.getElementById('loss');
 var savebtn = document.getElementById('save-btn');
 var testbtn = document.getElementById('test-btn');
 var addcatebtn = document.getElementById('add-cate-btn');
+var togglebtn = document.getElementById('display-toggle-btn');
 let totalLoss = 0;
 
 const featureExtractor = ml5.featureExtractor('MobileNet', modelLoaded);
@@ -19,8 +20,8 @@ trainbtn.onclick = function () {
     featureExtractor.numClasses = lis.length;
 
     if(lis.length > 2){
-	featureExtractor.hiddenUnits = 200;
-	featureExtractor.epochs = 100;
+	featureExtractor.hiddenUnits = $("#hiddenUnits").value;
+	featureExtractor.epochs = $("#epochs").value;
     }
 
     for(var i = 0; i < lis.length; i++){
@@ -87,11 +88,16 @@ testbtn.onclick = function(){
 var category_box_index = 3;
 
 addcatebtn.onclick = function(){
-    var new_li = "<li style='display: inline-block;'><div class='suggest-knowledges' id='suggest-knowledges-raw'><div style='padding:10px;'><div class='train-img-box'><input class='input-class-name' placeholder='ここに何の画像か書いてください' id='train-img-classname"+category_box_index+"'><div class='train-img-zone' id='train-img-zone"+category_box_index+"'></div><label class='image-select-btn'>画像を選択<input type='file' accept='image/*' name='imgfile' style='display:none' linktag='train-img-zone"+category_box_index+"' class='mainImageInput' multiple></label></div></div></div></li>";
+    var new_li = "<li style='display: inline-block;'><div class='suggest-knowledges' id='suggest-knowledges-raw'><div style='padding:10px;'><div class='train-img-box'><input class='input-class-name' placeholder='ここに何の画像か書いてください' id='train-img-classname"+category_box_index+"'><div class='train-img-zone' id='train-img-zone"+category_box_index+"'></div><label class='image-select-btn'><div>画像を選択</div><input type='file' accept='image/*' name='imgfile' style='display:none' linktag='train-img-zone"+category_box_index+"' class='mainImageInput' multiple></label></div></div></div></li>";
 
     $("#train-img-ul").append(new_li);
     category_box_index++;
 
+};
+
+togglebtn.onclick = function(){
+    $(".train-img-zone").toggleClass("img-zone-toggle");
+    $(togglebtn).toggleClass("hide-mode");
 };
 
 
@@ -102,6 +108,11 @@ $(document).ready(function(){
 		var inputtag = $(this).attr("linktag");
 
 		if (FileReader && files && files.length) {
+
+		    var childs = $("#"+inputtag).children();
+
+		    $("#"+inputtag + " + label > div").html("画像を選択(" + (childs.length + files.length) + ")");
+
 		    for (var i = 0; i < files.length; i++)
 			{
 			    (function(){
