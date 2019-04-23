@@ -17,6 +17,12 @@ trainbtn.onclick = function () {
     var lastPromise;
     var lis = $("#train-img-ul").children();
     featureExtractor.numClasses = lis.length;
+
+    if(lis.length > 2){
+	featureExtractor.hiddenUnits = 200;
+	featureExtractor.epochs = 100;
+    }
+
     for(var i = 0; i < lis.length; i++){
 	var childs = $("#train-img-zone"+(i+1)).children();
 	var classname = $("#train-img-classname"+(i+1)).val();
