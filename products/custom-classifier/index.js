@@ -19,11 +19,14 @@ trainbtn.onclick = function () {
     var lis = $("#train-img-ul").children();
     featureExtractor.numClasses = lis.length;
 
+    loss.innerHTML = 'Loading Img to Classifier... 画像を読み込んでいます. ';
+
     if(lis.length > 2){
 	featureExtractor.hiddenUnits = parseInt($("#hiddenUnits").val());
 	featureExtractor.epochs = parseInt($("#epochs").val());
     }
 
+    var totalImgs = 0;
     for(var i = 0; i < lis.length; i++){
 	var childs = $("#train-img-zone"+(i+1)).children();
 	var classname = $("#train-img-classname"+(i+1)).val();
@@ -31,6 +34,7 @@ trainbtn.onclick = function () {
 
 	if(childs.length == 0){
 	    alert(classname+"クラスにはまだ画像がありません.少なくとも1枚は画像をおいてください.");
+	    loss.innerHTML = "学習はまだ行われていません.";
 	    return;
 	}
 
@@ -38,10 +42,11 @@ trainbtn.onclick = function () {
 	    console.log($("#train-img-classname"+(i+1)).val());
 	    
 	    lastPromise = classifier.addImage(childs[j], classname);
+	    loss.innerHTML = 'Loading Img to Classifier... 画像を読み込んでいます. ('+totalImgs+')';
+	    totalImgs++;
 	}
     }
 
-    loss.innerHTML = 'Loading Img to Classifier... 画像を読み込んでいます. ' + totalLoss;
 
     lastPromise.then(classifier => classifier.train(function(lossValue) {
 	    if (lossValue) {
