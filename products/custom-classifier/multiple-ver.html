@@ -252,8 +252,13 @@ background-color:gray;
        次に、上で指定した画像を使用して、あなたの識別器を学習します.<br>
        学習が終わるまでしばらくお待ちください.<br>
        調整できるパラメータ(隠れ層の数, エポック数)を以下に用意しておきます.
+       <p style="color:rgb(120, 120, 120);font-size:12px;padding:10px;">
+	 Lossで表示される値が小さくなると間違いが少ないよという意味です.<br>
+	 隠れ層の数を増やすとより正しく識別できるようになるかもしれません.<br>
+	 エポック数は要は時間です.長くなるほどよく識別できるようになるかもしれません.
+       </p>
        <div style="padding:20px; text-align:center;margin:auto;">
-	 <input id="hiddenUnits" type="number" placeholder="隠れ層の数" value="100">
+	 <input id="hiddenUnits" type="number" placeholder="隠れ層の数" value="300">
 	 <input id="epochs" type="number" placeholder="計算回数数" value="100">
        </div>
        <div id="train-btn" class="train-btn">学習開始</div>
