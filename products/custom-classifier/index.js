@@ -20,8 +20,8 @@ trainbtn.onclick = function () {
     featureExtractor.numClasses = lis.length;
 
     if(lis.length > 2){
-	featureExtractor.hiddenUnits = $("#hiddenUnits").value;
-	featureExtractor.epochs = $("#epochs").value;
+	featureExtractor.hiddenUnits = parseInt($("#hiddenUnits").val());
+	featureExtractor.epochs = parseInt($("#epochs").val());
     }
 
     for(var i = 0; i < lis.length; i++){
