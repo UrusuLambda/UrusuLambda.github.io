@@ -19,7 +19,9 @@ trainbtn.onclick = function () {
     var lis = $("#train-img-ul").children();
     featureExtractor.numClasses = lis.length;
 
-    loss.innerHTML = 'Loading Img to Classifier... 画像を読み込んでいます. ';
+    var infotext = 'Loading Img to Classifier... 画像を読み込んでいます. ';
+    loss.innerHTML = infotext;
+    console.log(infotext);
 
     if(lis.length > 2){
 	featureExtractor.hiddenUnits = parseInt($("#hiddenUnits").val());
@@ -34,7 +36,9 @@ trainbtn.onclick = function () {
 
 	if(childs.length == 0){
 	    alert(classname+"クラスにはまだ画像がありません.少なくとも1枚は画像をおいてください.");
-	    loss.innerHTML = "学習はまだ行われていません.";
+	    infotext = "学習はまだ行われていません.";
+	    console.log(infotext);
+	    loss.innerHTML = infotext;
 	    return;
 	}
 
@@ -42,7 +46,9 @@ trainbtn.onclick = function () {
 	    console.log($("#train-img-classname"+(i+1)).val());
 	    
 	    lastPromise = classifier.addImage(childs[j], classname);
-	    loss.innerHTML = 'Loading Img to Classifier... 画像を読み込んでいます. ('+totalImgs+')';
+	    infotext = 'Loading Img to Classifier... 画像を読み込んでいます. ('+totalImgs+')';
+	    console.log(infotext);
+	    loss.innerHTML = infotext;
 	    totalImgs++;
 	}
     }
@@ -51,7 +57,7 @@ trainbtn.onclick = function () {
     lastPromise.then(classifier => classifier.train(function(lossValue) {
 	    if (lossValue) {
 		totalLoss = lossValue;
-		loss.innerHTML = 'Learnign.... Loss: ' + totalLoss;
+		loss.innerHTML = 'Learning.... Loss: ' + totalLoss;
 		console.log(lossValue);
 	    } else {
 		loss.innerHTML = 'Done Training! Final Loss: ' + totalLoss;
