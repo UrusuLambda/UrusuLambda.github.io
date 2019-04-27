@@ -161,7 +161,7 @@ imglabel.style.opacity = 0;
 function modelLoaded(){
     statusdiv.innerHTML = "モデルのロード完了.<br>続いてパラメータをロード";
 
-    classifier.load("products/toho-classifier/16person_800_70/model.json", function(){
+    classifier.load("16person_800_70/model.json", function(){
 	    statusdiv.innerHTML = "パラメータもロード完了.<br>以下にて東方キャラクターの画像を選択してください.";
 	    imglabel.style.opacity = 1;
 	});
