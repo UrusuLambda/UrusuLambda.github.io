@@ -121,12 +121,12 @@ width:100%;
        <a style="text-decoration:none;color:inherit" href="https://urusulambda.github.io/products/custom-classifier/multiple-ver.html">https://urusulambda.github.io/products/custom-classifier/multiple-ver.html</a>
 
        <p>
-	 上記の簡易的な学習によって実現するため精度は高くありませんのでご注意を.
+	 上記の簡易的な学習によって実現するため<b>精度は高くありません</b>のでご注意を.
        </p>
      </div>
    </div>
   <div class="suggest-knowledge-zone" style="">
-    <div class="suggest-knowledges-header">識別訓練済みキャラクター(20キャラ)</div>
+    <div class="suggest-knowledges-header">識別訓練済みキャラクター(16キャラ)</div>
     <div style="width:70%;margin:20px auto;text-align:center;">
       博麗霊夢,霧雨魔理沙,十六夜咲夜,レミリア・スカーレット,フランドール・スカーレット,<br>
       チルノ,アリス・マーガトロイド,魂魄妖夢,西行寺幽々子,八雲紫,鈴仙・優曇華院・イナバ,<br>
@@ -187,7 +187,7 @@ $(document).ready(function(){
 				    alert(err);
 				}else{
 				    var cellresult = "<div>これは<b style='color:red'>"+results[0].label+"</b> ("+(results[0].confidence*100)+"%)</div>";
-				    $("#result-table").append(cellresult);
+				    $("#result-table").html(cellresult);
 				}
 			    });
 		    }
