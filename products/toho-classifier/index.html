@@ -84,6 +84,7 @@ width:100%;
 	 識
        </div>
        <div style="display:table-cell;background-color:rgb(51, 50, 49);" class="toho-classifier-cell">
+	 β版
        </div>
        <div style="display:table-cell" class="toho-classifier-cell">
 	 器
@@ -118,6 +119,10 @@ width:100%;
      このような画像識別器は以下のサイトに作成することができます.
      <div style="maring:10px auto;">
        <a style="text-decoration:none;color:inherit" href="https://urusulambda.github.io/products/custom-classifier/multiple-ver.html">https://urusulambda.github.io/products/custom-classifier/multiple-ver.html</a>
+
+       <p>
+	 上記の簡易的な学習によって実現するため精度は高くありませんのでご注意を.
+       </p>
      </div>
    </div>
   <div class="suggest-knowledge-zone" style="">
@@ -125,8 +130,7 @@ width:100%;
     <div style="width:70%;margin:20px auto;text-align:center;">
       博麗霊夢,霧雨魔理沙,十六夜咲夜,レミリア・スカーレット,フランドール・スカーレット,<br>
       チルノ,アリス・マーガトロイド,魂魄妖夢,西行寺幽々子,八雲紫,鈴仙・優曇華院・イナバ,<br>
-      八意永琳,射命丸文,古明地こいし,鬼人正邪,クラウンピース,洩矢諏訪子,比那名居天子,<br>
-      蓬莱山輝夜,依神紫苑
+      八意永琳,射命丸文,古明地こいし,鬼人正邪,クラウンピース
     </div>
   </div>
   
@@ -157,7 +161,7 @@ imglabel.style.opacity = 0;
 function modelLoaded(){
     statusdiv.innerHTML = "モデルのロード完了.<br>続いてパラメータをロード";
 
-    classifier.load("model2.json", function(){
+    classifier.load("products/toho-classifier/16person_800_70/model.json", function(){
 	    statusdiv.innerHTML = "パラメータもロード完了.<br>以下にて東方キャラクターの画像を選択してください.";
 	    imglabel.style.opacity = 1;
 	});

@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <title>Toho-Classifier - Urusu Lambda Laboratory -</title>
+    <meta name="description" content="Toho-Classifier.ここではWeb上で文字認識、機械学習などを駆使しながら、敵を操って戦うWebミニゲームの製作を行っています.作業日誌みたいなものですので技術解説ページではありません.UrusuLambdaのいろいろ実験場.WebサービスやDeepLearing、ロボットなどのソースコードや実験を残していこうと思います.大したことないスニペット等も含んでいますが、ご了承ください.">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" async
+	    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123328586-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123328586-1');
+</script>
+
+  </head>
+  <body style="width:100%;height:100%;background-color:rgb(220, 220, 220);padding:0px;margin:0px;">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:black!important;color:white;">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a style="font-family: 'Kaushan Script', cursive;color:white;" class="nav-link" href="../index.html">ULL Top<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+    <div style="font-family: 'Kaushan Script', cursive;width:100%;height:50%;background-color:rgb(49, 50, 51);min-height:300px;">
+      <div style="text-align:center;width:100%;padding-top:100px;font-size:60px;color:white;font-weight:bold;">Toho-Classifier</div>
+      <div style="text-align:center;width:100%;font-family: 'Kaushan Script', cursive;color:white;">Sample Code for classfying Toho Charactor with small training by <b style="color:red;"><a href="https://github.com/ml5js" style="text-decoration:none; color:inherit">ml5.js</a></b>.</div>
+      
+      <div style="text-align:center;width:100%;font-family: 'Kaushan Script', cursive;color:white;">Demo Page : <a href="http://urusulamba.github.io/products/toho-classifier/index.html"file:///Users/aginika/work/github/UrusuLambda.github.io/products/toho-classifier/index.html</a></div>
+    </div>
+    <div>
+      <div class="container-fluid">
+      <div class="row">
+	<nav class="col-md-2 d-none d-md-block bg-light sidebar" style="background-color:transparent!important;">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="true" aria-controls="collapseExample1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                  What is it?
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  How? <span class="sr-only">(current)</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" style="padding:0px;background-color:white;">
+	  <div id="accordion">
+	    <div class="card" style="border:none;">
+	      <div class="collapse show" id="collapseExample1" style="background-color:white;width:100%;height:100%;" data-parent="#accordion">
+		<div>
+		  <h1>What is This?</h1>
+		  
+		</div>
+		<div style="padding:20px 40px;">
+		<b>ml5.js</b>(Web上で簡単にDeepLearning関連の技術を実行できるライブラリ)を用いて,東方キャラを分類するサンプルです.<br>
+		その場でアップロードされたもの検索されたものを用いて学習することができます<br>
+		本来サーバで学習すべきところをノートPCで行なっており、色々と制限をいれているため、精度は低いです!...
+
+		Page : <a href="toho-classifier/index.html">Toho-Classifier Demo</a>
+		<iframe  style="width:100%;height:500px;" src="toho-classifier/index.html"></iframe>
+		</div>
+
+	      </div>
+	    </div>
+	    <div class="card" style="border:none;">
+	      <div class="collapse" id="collapseExample2" data-parent="#accordion">
+		<h1>How?</h1>		
+		<div style="padding:20px 40px;">
+		  <p>
+		    今回は, <b style="color:red;"><a href="https://github.com/ml5js" style="text-decoration:none; color:inherit">ml5.js</a></b>を用いて
+		    簡単な転移学習をして東方キャラの分類器を作りました.<br>
+		    MobileNetの途中までを特徴量学習器としてそのあとの学習器を追加して学習を行ったものです.<br>
+		    簡易な学習になっているため、精度は高くありません.
+		  </p>
+		</div>
+	      </div>
+	    </div>
+	  </div>
+	</main>
+      </div>
+      </div>
+    </div>
+</body>
+</html>
