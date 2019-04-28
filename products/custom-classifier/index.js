@@ -108,10 +108,12 @@ if(addcatebtn){
     };
 }
 
-togglebtn.onclick = function(){
-    $(".train-img-zone").toggleClass("img-zone-toggle");
-    $(togglebtn).toggleClass("hide-mode");
-};
+if(togglebtn){
+    togglebtn.onclick = function(){
+	$(".train-img-zone").toggleClass("img-zone-toggle");
+	$(togglebtn).toggleClass("hide-mode");
+    };
+}
 
 
 $(document).ready(function(){
