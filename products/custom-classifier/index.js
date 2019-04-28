@@ -98,13 +98,15 @@ testbtn.onclick = function(){
 
 var category_box_index = 3;
 
-addcatebtn.onclick = function(){
-    var new_li = "<li style='display: inline-block;'><div class='suggest-knowledges' id='suggest-knowledges-raw'><div style='padding:10px;'><div class='train-img-box'><input class='input-class-name' placeholder='ここに何の画像か書いてください' id='train-img-classname"+category_box_index+"'><div class='train-img-zone' id='train-img-zone"+category_box_index+"'></div><label class='image-select-btn'><div>画像を選択</div><input type='file' accept='image/*' name='imgfile' style='display:none' linktag='train-img-zone"+category_box_index+"' class='mainImageInput' multiple></label></div></div></div></li>";
-
-    $("#train-img-ul").append(new_li);
-    category_box_index++;
-
-};
+if(addcatebtn){
+    addcatebtn.onclick = function(){
+	var new_li = "<li style='display: inline-block;'><div class='suggest-knowledges' id='suggest-knowledges-raw'><div style='padding:10px;'><div class='train-img-box'><input class='input-class-name' placeholder='ここに何の画像か書いてください' id='train-img-classname"+category_box_index+"'><div class='train-img-zone' id='train-img-zone"+category_box_index+"'></div><label class='image-select-btn'><div>画像を選択</div><input type='file' accept='image/*' name='imgfile' style='display:none' linktag='train-img-zone"+category_box_index+"' class='mainImageInput' multiple></label></div></div></div></li>";
+	
+	$("#train-img-ul").append(new_li);
+	category_box_index++;
+	
+    };
+}
 
 togglebtn.onclick = function(){
     $(".train-img-zone").toggleClass("img-zone-toggle");
