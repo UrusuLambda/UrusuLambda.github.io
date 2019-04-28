@@ -23,7 +23,7 @@ trainbtn.onclick = function () {
     loss.innerHTML = infotext;
     console.log(infotext);
 
-    if(lis.length > 2){
+    if(lis.length >= 2){
 	featureExtractor.hiddenUnits = parseInt($("#hiddenUnits").val());
 	featureExtractor.epochs = parseInt($("#epochs").val());
     }
