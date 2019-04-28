@@ -16,7 +16,7 @@ const yolo = ml5.YOLO({ filterBoxesThreshold: 0.03,
 // Extract the already learned features from MobileNet
 const featureExtractor = ml5.featureExtractor('MobileNet', modelLoaded);
 // Create a new classifier using those features
-const classifier = featureExtractor.classification(img4, videoReady);
+const classifier = featureExtractor.classification();
 
 function modelLoaded(){
     console.log("Done Loding");
