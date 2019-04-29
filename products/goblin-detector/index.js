@@ -120,11 +120,11 @@ testbtn.onclick = function(){
 					if(err){
 					    alert(err);
 					}else{
+					    if(results[0].confidence <= 0.99){
+						results[0].label = "notゴブリン";
+					    }
+						
 					    if(results[0].label == "ゴブリン"){
-						if(results[0].confidence <= 0.99){
-						    results[0].label = "notゴブリン";
-						}
-
 						var rect = new fabric.Rect({
 							left: left,
 							top: top,
