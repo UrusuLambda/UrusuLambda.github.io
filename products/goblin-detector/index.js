@@ -8,7 +8,7 @@ var addcatebtn = document.getElementById('add-cate-btn');
 let totalLoss = 0;
 var canvas;
 
-const yolo = ml5.YOLO({ filterBoxesThreshold: 0.03,
+const yolo = ml5.YOLO({ filterBoxesThreshold: 0.02,
 			IOUThreshold: 0.2,
 			classProbThreshold: 0.03 },
 		      modelLoaded);
@@ -122,6 +122,7 @@ testbtn.onclick = function(){
 				    width: width,
 				    height: height,
 				});
+				var yololabel = result.label;
 
 				var clid = "#crop-label"+i;
 				var imgElem = document.createElement("img");
@@ -131,6 +132,10 @@ testbtn.onclick = function(){
 					    alert(err);
 					}else{
 					    if(results[0].label == "ゴブリン"){
+						if(results[0].confidence <= 0.99){
+						    results[9].label = "notゴブリン";
+						}
+
 						var rect = new fabric.Rect({
 							left: left,
 							top: top,
@@ -143,7 +148,12 @@ testbtn.onclick = function(){
 						canvas.add(rect);
 						canvas.renderAll();
 					    }
-					    var cellresult = "<div>これは<b style='color:red'>"+results[0].label+"</b> ("+(results[0].confidence*100)+"%)</div>";
+					    var cellresult = "";
+					    if(results[0].label == "ゴブリン"){
+						cellresult = "<div>これは<b style='color:red'>"+results[0].label+"</b> ("+(results[0].confidence*100)+"%)</div><br>Yolo : "+yololabel;
+					    else{
+						cellresult = "<div>これは<b style='color:blue'>ゴブリンじゃないな</b></div>";
+					    }
 					    $(clid).html(cellresult);
 					}
 				    });
