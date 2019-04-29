@@ -9,7 +9,7 @@ let totalLoss = 0;
 var canvas;
 
 const yolo = ml5.YOLO({ filterBoxesThreshold: 0.03,
-			IOUThreshold: 0.3,
+			IOUThreshold: 0.2,
 			classProbThreshold: 0.03 },
 		      modelLoaded);
 
@@ -23,7 +23,7 @@ function modelLoaded(){
     $("#loading").html("Model Loading Done !!<br>モデルのロードが完了しました.");
     status = true;
 
-    classifier.load("model.json", function(){
+    classifier.load("model2.json", function(){
 	    $("#loading").html("パラメータもロード完了.<br>以下にて画像を選択してください.");
 	});
 
@@ -143,10 +143,7 @@ testbtn.onclick = function(){
 						canvas.add(rect);
 						canvas.renderAll();
 					    }
-					    console.log(clid);
-					    console.log(imgElem);
 					    var cellresult = "<div>これは<b style='color:red'>"+results[0].label+"</b> ("+(results[0].confidence*100)+"%)</div>";
-					    console.log(cellresult);
 					    $(clid).html(cellresult);
 					}
 				    });
