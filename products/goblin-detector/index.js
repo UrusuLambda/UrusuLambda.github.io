@@ -102,7 +102,10 @@ testbtn.onclick = function(){
 			    $("#result-table").append("<div style='display:table-row'><div  style='display:table-cell;max-height:120px;'> <img style='margin:5px;max-height:120px;' src='" + croppedImg + "'></div><div style='display:table-cell;vertical-align:middle;' id='crop-label"+i+"'></div><div style='display:table-cell;vertical-align:middle;'>"+ (result.confidence*100) +"</div></div>");
 
 			    var clid = "#crop-label"+i;
-			    classifier.classify(croppedImg, function(err, results){
+			    var imgElem = document.createElement("img");
+			    imgElem.src = croppedImg;
+
+			    classifier.classify(imgElem, function(err, results){
 				    if(err){
 					alert(err);
 				    }else{
