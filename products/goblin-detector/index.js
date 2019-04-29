@@ -2,9 +2,7 @@ var trainbtn = document.getElementById('train-btn');
 var loss = document.getElementById('loss');
 var savebtn = document.getElementById('save-btn');
 var testbtn = document.getElementById('test-btn');
-var addcatebtn = document.getElementById('add-cate-btn');
 var togglebtn = document.getElementById('display-toggle-btn');
-var addcatebtn = document.getElementById('add-cate-btn');
 let totalLoss = 0;
 var canvas;
 
@@ -43,8 +41,6 @@ testbtn.onclick = function(){
 	
 	console.log("clear done");
     }
-
-    $("#add-cate-btn")[0].style.display = "";
 
     canvas = new fabric.Canvas('canvas', {
 	    });
@@ -151,7 +147,7 @@ testbtn.onclick = function(){
 					    var cellresult = "";
 					    if(results[0].label == "ゴブリン"){
 						cellresult = "<div>これは<b style='color:red'>"+results[0].label+"</b> ("+(results[0].confidence*100)+"%)</div><br>Yolo : "+yololabel;
-					    else{
+					    }else{
 						cellresult = "<div>これは<b style='color:blue'>ゴブリンじゃないな</b></div>";
 					    }
 					    $(clid).html(cellresult);
@@ -169,8 +165,6 @@ testbtn.onclick = function(){
 var category_box_index = 3;
 
 $(document).ready(function(){
-	$("#add-cate-btn")[0].style.display = "none";
-
 	$(document).on("change", ".mainImageInput", function(e){
 		var tgt = e.target || window.event.srcElement,
 		    files = tgt.files;
