@@ -1,9 +1,4 @@
-var trainbtn = document.getElementById('train-btn');
-var loss = document.getElementById('loss');
-var savebtn = document.getElementById('save-btn');
 var testbtn = document.getElementById('test-btn');
-var togglebtn = document.getElementById('display-toggle-btn');
-let totalLoss = 0;
 var canvas;
 
 const yolo = ml5.YOLO({ filterBoxesThreshold: 0.02,
@@ -154,8 +149,6 @@ testbtn.onclick = function(){
 	})();
     }
 };
-
-var category_box_index = 3;
 
 $(document).ready(function(){
 	$(document).on("change", ".mainImageInput", function(e){
