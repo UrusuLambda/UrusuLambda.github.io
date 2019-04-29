@@ -116,6 +116,13 @@ testbtn.onclick = function(){
 				var width  = imgElement.width * result.w * rateWidth;
 				var height  = imgElement.height * result.h * rateHeight;
 			
+				var croppedImg = canvas.toDataURL({
+				    left: left,
+				    top: top,
+				    width: width,
+				    height: height,
+				});
+
 				var clid = "#crop-label"+i;
 				var imgElem = document.createElement("img");
 				imgElem.src = croppedImg;
