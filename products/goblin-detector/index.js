@@ -86,7 +86,7 @@ testbtn.onclick = function(){
 		    //Cut and show images of candidate
 		    for(var i = 0; i < results.length; i++){
 			var result = results[i];
-			if(result.label == "person"){
+			if(result.label){// == "person"){
 			    var left  = imgElement.width * result.x * rateWidth;
 			    var top  = imgElement.height * result.y * rateHeight;
 			    var width  = imgElement.width * result.w * rateWidth;
@@ -102,7 +102,20 @@ testbtn.onclick = function(){
 			    $("#result-table").append("<div style='display:table-row'><div  style='display:table-cell;max-height:120px;'> <img style='margin:5px;max-height:120px;' src='" + croppedImg + "'></div><div style='display:table-cell;vertical-align:middle;' id='crop-label"+i+"'></div><div style='display:table-cell;vertical-align:middle;'>"+ (result.confidence*100) +"</div></div>");
 
 			    
+			    
+			}
+		    }
+		    //rectangle
+		    for(var i = 0; i < results.length; i++){
+			var result = results[i];
+			if(result.label){// == "person"){
+			    
 			    (function(){
+				var left  = imgElement.width * result.x * rateWidth;
+				var top  = imgElement.height * result.y * rateHeight;
+				var width  = imgElement.width * result.w * rateWidth;
+				var height  = imgElement.height * result.h * rateHeight;
+			
 				var clid = "#crop-label"+i;
 				var imgElem = document.createElement("img");
 				imgElem.src = croppedImg;
@@ -110,6 +123,19 @@ testbtn.onclick = function(){
 					if(err){
 					    alert(err);
 					}else{
+					    if(results[0].label == "ゴブリン"){
+						var rect = new fabric.Rect({
+							left: left,
+							top: top,
+							width: width,
+							height: height,
+							fill: 'rgba(0,0,0,0)',
+							stroke: 'rgba(150,20,20,1)',
+							strokeWidth: 5
+						    });
+						canvas.add(rect);
+						canvas.renderAll();
+					    }
 					    console.log(clid);
 					    console.log(imgElem);
 					    var cellresult = "<div>これは<b style='color:red'>"+results[0].label+"</b> ("+(results[0].confidence*100)+"%)</div>";
@@ -118,28 +144,7 @@ testbtn.onclick = function(){
 					}
 				    });
 			    })();
-			}
-		    }
-		    //rectangle
-		    for(var i = 0; i < results.length; i++){
-			var result = results[i];
-			if(result.label){// == "person"){
-			    var left  = imgElement.width * result.x * rateWidth;
-			    var top  = imgElement.height * result.y * rateHeight;
-			    var width  = imgElement.width * result.w * rateWidth;
-			    var height  = imgElement.height * result.h * rateHeight;
-			
-			    var rect = new fabric.Rect({
-				    left: left,
-				    top: top,
-				    width: width,
-				    height: height,
-				    fill: 'rgba(0,0,0,0)',
-				    stroke: 'rgba(150,20,20,1)',
-				    strokeWidth: 5
-				});
-			    canvas.add(rect);
-			    canvas.renderAll();
+			    
 			}
 		    }
 		});
