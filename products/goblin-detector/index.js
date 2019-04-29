@@ -122,7 +122,7 @@ testbtn.onclick = function(){
 					}else{
 					    if(results[0].label == "ゴブリン"){
 						if(results[0].confidence <= 0.99){
-						    results[9].label = "notゴブリン";
+						    results[0].label = "notゴブリン";
 						}
 
 						var rect = new fabric.Rect({
