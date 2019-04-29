@@ -101,18 +101,23 @@ testbtn.onclick = function(){
 
 			    $("#result-table").append("<div style='display:table-row'><div  style='display:table-cell;max-height:120px;'> <img style='margin:5px;max-height:120px;' src='" + croppedImg + "'></div><div style='display:table-cell;vertical-align:middle;' id='crop-label"+i+"'></div><div style='display:table-cell;vertical-align:middle;'>"+ (result.confidence*100) +"</div></div>");
 
-			    var clid = "#crop-label"+i;
-			    var imgElem = document.createElement("img");
-			    imgElem.src = croppedImg;
-
-			    classifier.classify(imgElem, function(err, results){
-				    if(err){
-					alert(err);
-				    }else{
-					var cellresult = "<div>これは<b style='color:red'>"+results[0].label+"</b> ("+(results[0].confidence*100)+"%)</div>";
-					$(clid).html(cellresult);
-				    }
-				});
+			    
+			    (function(){
+				var clid = "#crop-label"+i;
+				var imgElem = document.createElement("img");
+				imgElem.src = croppedImg;
+				classifier.classify(imgElem, function(err, results){
+					if(err){
+					    alert(err);
+					}else{
+					    console.log(clid);
+					    console.log(imgElem);
+					    var cellresult = "<div>これは<b style='color:red'>"+results[0].label+"</b> ("+(results[0].confidence*100)+"%)</div>";
+					    console.log(cellresult);
+					    $(clid).html(cellresult);
+					}
+				    });
+			    })();
 			}
 		    }
 		    //rectangle
