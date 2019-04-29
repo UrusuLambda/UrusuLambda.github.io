@@ -27,13 +27,6 @@ function modelLoaded(){
 
 }
 
-addcatebtn.onclick = function(){
-    var imgElement = document.getElementById('img-target');
-    imgElement.style.display = "auto";
-    imgElement.style.width /= 2;
-
-};
-
 
 testbtn.onclick = function(){
     if(canvas){
