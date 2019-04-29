@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@urusulambda" />
 <meta name="twitter:title" content="GoblinDetector - UrusuLambdaLaboratory" />
-<meta name="twitter:description" content="画像のゴブリンが写っているかどうかを判定するページです!ml5.jsを使ったサンプルになります." />
+<meta name="twitter:description" content="画像のゴブリンが写っているかどうかを判定するページです!ml5.jsのYoloとClassifierを使ったサンプルになります." />
 <meta name="twitter:image" content="https://urusulambda.github.io/img/goblindetector.png" />
 <meta name="twitter:url" content="<%= tw_url %>" />
 
@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="GoblinDetector">
 <meta property="og:url" content="https://urusulambda.github.io/products/goblin-detector/index.html">
 <meta property="og:image" content="https://urusulambda.github.io/img/goblindetector.png">
-<meta property="og:description" content="画像のゴブリンが写っているかどうかを判定するページです!ml5.jsを使ったサンプルになります.">
+<meta property="og:description" content="画像のゴブリンが写っているかどうかを判定するページです!ml5.jsのYoloとClassifierを使ったサンプルになります.">
 
 
 
@@ -190,7 +190,8 @@ transform:scale(1.1);
      <div style="width:100%; text-align:center;color:rgb(255, 255, 255);">
        シンプルなゴブリンディテクター<br>
        画像をアップロードしてゴブリンが写っているかどうかを確認しましょう!<br>
-       解答精度は保証できません.<br>
+       精度は非常に低く、全く正しいことを保証できません.<br>
+       <font style="color:rgb(255, 150, 150);">またイラストでしかテストしていないため、現実の写真は入力画像として当てないでください</font>
      </div>
 
      <div>
@@ -207,7 +208,7 @@ transform:scale(1.1);
      <div class="suggest-knowledges-header" style="color:rgb(80, 80, 80);font-size:20px;">GoblinCheck</div>
      <div style="width:100%; text-align:center;color:rgb(100, 100, 100);margin:auto;">
        ゴブリンが含まれるかどうかを確かめたい画像を以下で選択してください.<br>
-       精度は保証されません.
+       繰り返しますが精度は保証されません.当たっていればラッキーレベルです.
 
        <div style="margin:30px auto;width:100%;text-align:center;">
 	 <div id="train-img-zone0"></div>

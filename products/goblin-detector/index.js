@@ -75,7 +75,7 @@ testbtn.onclick = function(){
 		    //Cut and show images of candidate
 		    for(var i = 0; i < results.length; i++){
 			var result = results[i];
-			if(result.label){// == "person"){
+			if(result.label && result.w * result.h > 0.01){// == "person"){
 			    var left  = imgElement.width * result.x * rateWidth;
 			    var top  = imgElement.height * result.y * rateHeight;
 			    var width  = imgElement.width * result.w * rateWidth;
@@ -97,7 +97,7 @@ testbtn.onclick = function(){
 		    //rectangle
 		    for(var i = 0; i < results.length; i++){
 			var result = results[i];
-			if(result.label){// == "person"){
+			if(result.label && result.w * result.h > 0.01){// == "person"){
 			    
 			    (function(){
 				var left  = imgElement.width * result.x * rateWidth;
