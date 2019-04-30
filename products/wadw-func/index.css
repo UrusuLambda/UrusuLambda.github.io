@@ -118,3 +118,44 @@ background-color:white;
     }    
 }
 
+.canvasjs-chart-credit{
+display:none !important;
+}
+
+.remove-li{
+background-color:red;
+color:white;
+width:23px;
+height:10px;
+display:table-cell;
+font-weight:bold;
+cursor:pointer;
+transition:all 1s;
+}
+
+.remove-li:hover{
+transform:scale(1.1);
+}
+
+.add-li{
+background-color:green;
+color:white;
+width:23px;
+height:10px;
+display:table-cell;
+font-weight:bold;
+cursor:pointer;
+transition:all 1s;
+}
+
+.add-li:hover{
+transform:scale(1.1);
+}
+
+.label-li{
+display:table-cell;
+}
+
+.label-row{
+display:table;
+}

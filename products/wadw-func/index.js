@@ -1,4 +1,259 @@
+var lastSelectedDataIndex = null;
+var lastSelectedData = null;
+var dataIndex = 4;
+
+function check(target){
+    var text = encodeURI($("#tweet-textarea").val());
+    $("#target-a").attr("href","https://twitter.com/share?text="+text+"&url=https://urusulambda.github.io/products/wadw-func/index.html&via=urusulambda&related=twitterapi,twitter&hashtags=HauVis");
+    $("#target-a").attr("target","_blank");
+    return true;
+}
+
 $(document).ready(function(){
+	$(document).on("click",".remove-li", function(){
+		console.log("dsid : " + $(this).attr("dsid"));
+
+		console.log(chart.data);
+		for(var j = 0; j < chart.data.length; j++ ) {
+		    if(chart.data[j].options.dataSeriesId == parseInt($(this).attr("dsid"))){
+			chart.data[j].remove();
+		    }
+		}
+		console.log(chart.data);
+		
+		$(this).parent().parent().remove();
+	    });
+	
+	$(document).on("click",".add-li", function(){
+		$("#label-ul").append("<li><div class='label-row'> <div class='remove-li' dsid='" + dataIndex + "'>-</div><div class='label-li' dsid='"+ dataIndex +"'><input value='New Data'/></div></div></li>");
+
+		var newSeries = {
+		    dataSeriesId : dataIndex,
+		    legendText: "NewData",
+		    showInLegend: true,
+		    type: "spline",
+		    cursor: "move",
+		    dataPoints: [
+		{ x: 1000, y: 50 },
+		{ x: 2000, y: 50 },
+		{ x: 3000, y: 50 },
+		{ x: 4000, y: 50 },
+		{ x: 5000, y: 50 },
+		{ x: 6000, y: 50 },
+		{ x: 7000, y: 50 },
+		{ x: 8000, y: 50 },
+		{ x: 9000, y: 50 }
+				 ]
+		};
+    
+		chart.options.data.push(newSeries);
+		chart.render();
+
+		dataIndex++;
+	    });
+	
+	$(document).on("keyup", "input", function(){
+		var dsid = parseInt($(this).parent().attr("dsid"));
+
+		for(var j = 0; j < chart.data.length; j++ ) {
+		    if(chart.data[j].options.dataSeriesId == dsid){
+			console.log("match : " + dsid);
+			chart.options.data[j].legendText = this.value;
+			//chart.data[j].options.legendText = this.value;
+			//chart.data[j].legendText = $(this).value;
+			console.log(chart);
+			chart.render();
+			break;
+		    }
+		}
+		
+		chart.render();
+		console.log("change : " + this.value);
+	    });
+
+	$("#save-tweet-btn").on("click", function(){
+		var canvas = $("#chartContainer .canvasjs-chart-canvas").get(0);
+		var dfilename = canvas.toDataURL('jpg');
+
+		$('<a>').attr({
+			href: dfilename,
+			    download:"satisfyPerCost.jpg" 
+			    })[0].click(function(){
+				    
+				});
+		
+	    });
+
+
+	var chart = new CanvasJS.Chart("chartContainer", {
+		animationEnabled: true,
+		theme: "light2",
+		title: {
+		    text: "費用対満足"
+		},
+		subtitles: [{
+			text: "対象ごとのあなたのお金に対する満足度のグラフを描くことができます."
+		    }],
+		axisX: {
+		    minimum: 0,
+		    maximum: 10000,
+		    title: "費用(¥)"
+		},
+		data: [{
+			dataSeriesId : 1,
+			legendText: "ラーメン",
+			showInLegend: true,
+			type: "spline",
+			cursor: "move",
+			dataPoints: [
+        { x: 1000, y: 71 },
+        { x: 2000, y: 55 },
+        { x: 3000, y: 50 },
+        { x: 4000, y: 65 },
+        { x: 5000, y: 95 },
+        { x: 6000, y: 68 },
+        { x: 7000, y: 28 },
+        { x: 8000, y: 34 },
+        { x: 9000, y: 14 }
+				     ]
+		    },{
+			dataSeriesId : 2,
+			legendText: "寿司",
+			showInLegend: true,
+			type: "spline",
+			cursor: "move",
+			dataPoints: [
+        { x: 1000, y: 51 },
+        { x: 2000, y: 65 },
+        { x: 3000, y: 60 },
+        { x: 4000, y: 75 },
+        { x: 5000, y: 15 },
+        { x: 6000, y: 28 },
+        { x: 7000, y: 68 },
+        { x: 8000, y: 44 },
+        { x: 9000, y: 64 }
+				     ]
+		    },{
+			dataSeriesId : 3,
+			legendText: "ステーキ",
+			showInLegend: true,
+			type: "spline",
+			cursor: "move",
+			dataPoints: [
+        { x: 1000, y: 50 },
+        { x: 2000, y: 50 },
+        { x: 3000, y: 50 },
+        { x: 4000, y: 50 },
+        { x: 5000, y: 50 },
+        { x: 6000, y: 50 },
+        { x: 7000, y: 50 },
+        { x: 8000, y: 50 },
+        { x: 9000, y: 50 }
+				     ]
+		    }
+		    ]});
+	
+	chart.render();
+
+
+	var record = false;
+	var snapDistance = 5;
+	var xValue, yValue, parentOffset, relX, relY;
+	var selectedData = null;
+	var selectedDataIndex = null;
+	var newData = false;
+	var timerId = null;
+
+	$("#chartContainer .canvasjs-chart-canvas").last().on({
+		mousedown: function(e) {
+		    parentOffset = jQuery(this).parent().offset();
+		    relX = e.pageX - parentOffset.left;
+		    relY = e.pageY - parentOffset.top;
+		    xValue = Math.round(chart.axisX[0].convertPixelToValue(relX));
+		    yValue = Math.round(chart.axisY[0].convertPixelToValue(relY));
+
+		    if(xValue < 0 || yValue < 0){
+			return;
+		    }
+
+		    console.log("x, y " + xValue + " : " + yValue);
+
+		    for(var j = 0; j < chart.data.length; j++ ) {
+			var dps = chart.data[j].dataPoints;
+			console.log(dps);
+			for(var i = 0; i < dps.length; i++ ) {
+			    var dpsx = dps[i].x / 100;
+			    var dpsy = dps[i].y;
+			    if((xValue/100 >= dpsx - snapDistance && xValue/100 <= dpsx + snapDistance) && 
+			       (yValue >= dpsy - snapDistance && yValue <= dpsy + snapDistance) ) {
+				record = true;
+				selectedDataIndex = i;
+				console.log("selectedDataIndex " + selectedDataIndex);
+				break;
+			    } else {
+				selectedDataIndex = null;
+				console.log("No selectedDataIndex");
+			    }
+			}
+
+			if(selectedDataIndex != null){
+			    selectedData = j;
+			    break;
+			}
+		    }
+		    console.log("last selectedDataIndex : " + lastSelectedDataIndex);
+		    
+		    newData = (selectedDataIndex === null) ? true : false;
+		    isLastFocused = (lastSelectedData != null) ? true : false;
+		    if(newData && isLastFocused) {
+			var index = chart.data[lastSelectedData].dataPoints.findIndex(function (element) {
+				console.log("compared " +  xValue);
+				return element.x > xValue;
+			    });
+			console.log("index : " + index);
+			chart.data[lastSelectedData].addTo("dataPoints", {x: xValue, y: yValue}, index);
+			chart.axisX[0].set("maximum", Math.max(chart.axisX[0].maximum, xValue + 30));
+			//chart.render();
+		    }
+
+		    lastSelectedData = selectedData;
+		    lastSelectedDataIndex = selectedDataIndex;
+		    
+		},
+		    mousemove: function(e) {
+		    if(record && !newData) {
+			parentOffset = jQuery(this).parent().offset();
+			relX = e.pageX - parentOffset.left;
+			relY = e.pageY - parentOffset.top;
+			xValue = Math.round(chart.axisX[0].convertPixelToValue(relX));
+			yValue = Math.round(chart.axisY[0].convertPixelToValue(relY));
+
+			if(yValue > 100 || xValue < 0 || yValue < 0){
+			    return;
+			}
+
+			clearTimeout(timerId);
+			timerId = setTimeout(function(){
+				if(selectedDataIndex !== null) {
+				    chart.data[lastSelectedData].dataPoints[selectedDataIndex].x = xValue;
+				    chart.data[lastSelectedData].dataPoints[selectedDataIndex].y = yValue;
+				    chart.render();
+				}
+			    }, 0);
+		    }
+		},
+		    mouseup: function(e) {
+		    if(selectedDataIndex !== null) {
+			chart.data[lastSelectedData].dataPoints[selectedDataIndex].x = xValue;
+			chart.data[lastSelectedData].dataPoints[selectedDataIndex].y = yValue;
+			chart.render();
+			record = false;
+		    }
+		}
+	    });
+
+    });
+	/*
 
 	var chart = new CanvasJS.Chart("chartContainer", {
 		title: {

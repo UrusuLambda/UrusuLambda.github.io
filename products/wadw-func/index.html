@@ -17,7 +17,8 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script-->
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js"></script-->
     <!-- Internal Library -->
     <link rel="stylesheet" type="text/css" href="index.css">
     <script src="index.js"></script>
@@ -65,8 +66,16 @@
 	<script src="https://www.amcharts.com/lib/3/amstock.js"></script>	
 	<script src="https://www.amcharts.com/lib/3/xy.js"></script-->
 
-	<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+	<div id="chartContainer" style="height: 300px; width: 60%;margin:20px auto;"></div>
 
+	<div style="width:60%;text-align:center;margin:auto;">
+	  <ul id="label-ul" style="list-style-type:none;margin:auto;text-align:center;">
+	    <div class="add-li">+</div>
+	    <li><div class="label-row"><div class="remove-li" dsid="1">-</div><div class="label-li" dsid="1"><input value="ラーメン"/></div></div></li>
+	    <li><div class="label-row"><div class="remove-li" dsid="2">-</div><div class="label-li" dsid="2"><input value="寿司"/></div></div></li>
+	    <li><div class="label-row"><div class="remove-li" dsid="3">-</div><div class="label-li" dsid="3"><input value="ステーキ"/></div></div></li>
+	  </ul>
+	</div>
 	<!-- Chart code -->
 	<!--script>
 
@@ -91,8 +100,10 @@
 
       </div>
       <div class="twitter-zone">
-	<textarea class="wadu-textarea" placeholder="ツイート内容" >私の費用対満足! #WaduFunction #WaduViz</textarea>
-	<button class="btn tweet-btn"><i style="margin-right:10px;" class="fab fa-twitter"></i>ツイートする</button>
+	<textarea id="tweet-textarea" class="wadu-textarea" placeholder="ツイート内容" >私の費用対満足! #WaduFunc</textarea>
+	<a onclick="return check();" id="target-a" >
+	  <button id="save-tweet-btn" class="btn tweet-btn"><i style="margin-right:10px;" class="fab fa-twitter"></i>グラフを保存して別途ツイートする</button>
+	</a>
       </div>
 
       <a href="https://twitter.com/intent/tweet?button_hashtag=WaduFunction&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #WaduFunction</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
