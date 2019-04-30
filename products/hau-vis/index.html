@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>HauVisualizer</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
+
+    <!-- External Library -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.3/fabric.js"></script>
+ 
+    <!-- Internal Library -->
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="index.js"></script>
+
+ 
+  </head>
+  <body>
+    <div class="content-scroller">
+    <div class="main">
+      <h1 class="main-title hau-font">HauVisualizer</h1>
+      <img id="body-img" src="./fullbodyimage.png" style="display:none;" crossorigin="anonymous">
+      <div class="main-subtitle hau-font">
+	Show your body assert map
+      </div>
+      <div style="margin:30px auto 0px auto;display:table;">
+      <div class="main-subbio">
+	By <a href="https://urusulambda.wordpress.com" style="text-shadow:none;color:inherit;text-decoration:none;">Urusu Lambda
+	<img style="border-radius:50%;" width="32px" height="32px" src="https://avatars0.githubusercontent.com/u/34958002"></img>
+	</a>
+      </div>
+      </div>
+    </div>
+    <div class="detail hau-font">
+      自身の体で痛い部分を塗り分けてください.<br>
+      その後画像を保存してツイートします.
+      <div class="detail-twitter-mark">
+	<i class="fab fa-twitter"></i>
+      </div>
+      <div class="canvas-zone">
+	<div id="toggle-drawing">赤モード</div>
+	<div class="mask-canvas" style="">
+	  <canvas id="canvas" style="border:solid 1px rgb(240, 240, 240);border-radius:5px;margin:10px auto;width:100%;height:300px;"></canvas>
+	</div>
+      </div>
+      <div class="twitter-zone">
+	<textarea  id="tweet-textarea" class="hau-textarea" placeholder="ツイート内容" >ここが痛い!  #HauVis</textarea>
+	<button id="save-tweet-btn" class="btn tweet-btn"><i style="margin-right:10px;" class="fab fa-twitter"></i>画像保存してツイートする</button>
+      </div>
+
+      <a href="https://twitter.com/intent/tweet?button_hashtag=HauVis&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #HauVisualizer</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    </div>
+  </body>
+</html>

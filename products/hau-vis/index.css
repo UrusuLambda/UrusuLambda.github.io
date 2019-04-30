@@ -1,0 +1,146 @@
+html, body{
+width:100%;
+height:100%;
+overflow:hidden;
+margin:0px;
+position:relative;
+padding:0px;
+}
+
+.hau-font{
+font-family: 'Ubuntu', sans-serif;
+}
+
+.main{
+margin:auto;
+text-align:center;
+background-color:rgb(50, 50, 50);
+padding:70px;
+box-shadow:3px 3px 3px rgba(0, 0, 0, 0.3);
+z-index:100;
+}
+
+.content-scroller{
+width:100%;
+height:100%;
+overflow-y:scroll;
+margin:0px;
+padding:0px;
+}
+
+.main-title{
+color:white;
+text-shadow:3px 3px 0px rgb(100, 100, 100);
+}
+
+.main-subtitle{
+font-size:16px;
+color:rgb(220, 220, 220);
+font-family: 'Noto Serif JP', serif;
+
+}
+
+.main-subbio{
+font-family: 'Noto Serif JP', serif;
+margin:30px auto 0px auto;
+font-size:18px;
+color:white;
+#color:rgb(220, 220, 220);
+font-weight:bold;
+display:table-cell;
+vertical-align:middle;
+}
+
+.canvas-zone{
+width:90%;
+min-width:450px;
+margin:auto;
+text-align:center;
+}
+
+
+.detail{
+margin:auto;
+width:100%;
+text-align:center;
+background-color:white;
+padding:50px;
+font-family: 'Noto Serif JP', serif;
+
+}
+
+.detail-twitter-mark{
+color:rgb(50, 50, 50);
+font-size:100px;
+}
+
+
+.twitter-zone{
+width:60%;
+border-radius:5px;
+border:solid 1px rgba(0, 0, 0, 0.1);
+padding:20px;
+margin:40px auto;
+}
+
+.hau-textarea{
+margin:auto;
+width:100%;
+border:solid 1px rgba(0, 0, 0, 0.1);
+border-radius:5px;
+background-color:white;
+padding:5px;
+resize: none;
+}
+
+.tweet-btn{
+margin:20px auto;
+background-color:rgb(50, 50, 50);
+font-weight:bold;
+font-size:24px;
+padding:10px 30px;
+color:white;
+border-radius:1000px;
+}
+
+.tweet-btn:hover{
+background-color:white;
+}
+
+
+@media screen and ( max-width:800px )
+{
+    .twitter-zone{
+        width:100%;
+    }    
+}
+
+
+.mask-canvas{
+margin:auto;
+text-align:center;
+width:490px;
+height:467px;
+
+clip-path: polygon(13% 66%, 9% 67%, 6% 64%, 5% 61%, 7% 59%, 9% 56%, 10% 46%, 12% 39%, 13% 26%, 19% 24%, 20% 20%, 18% 15%, 20% 10%, 24% 9%, 28% 10%, 30% 14%, 28% 19%, 27% 21%, 28% 24%, 34% 26%, 36% 39%, 37% 44%, 38% 56%, 40% 57%, 42% 62%, 39% 67%, 34% 65%, 34% 57%, 31% 43%, 32% 60%, 31% 70%, 31% 81%, 30% 93%, 29% 97%, 33% 103%, 61% 104%, 58% 101%, 56% 98%, 58% 95%, 56% 81%, 56% 78%, 57% 74%, 57% 67%, 56% 61%, 53% 52%, 54% 42%, 53% 34%, 53% 27%, 56% 22%, 58% 20%, 55% 16%, 55% 12%, 60% 8%, 64% 9%, 67% 11%, 67% 16%, 68% 18%, 68% 21%, 65% 22%, 64% 25%, 66% 28%, 68% 32%, 67% 41%, 67% 48%, 67% 53%, 66% 59%, 65% 64%,
+ 72% 63%, 75% 59%, 74% 55%, 73% 51%, 71% 45%, 74% 37%, 81% 35%, 86% 36%, 90% 38%, 92% 42%, 92% 45%, 94% 50%, 93% 52%, 92% 54%, 92% 59%, 87% 60%, 86% 63%, 72% 63%, 65% 64%, 
+ 66% 71%, 64% 77%, 63% 83%, 63% 89%, 62% 95%, 64% 100%, 67% 103%, 66% 105%, 61% 104%, 33% 103%, 29% 104%, 26% 102%, 24% 100%, 25% 93%, 24% 71%, 24% 64%, 24% 73%, 24% 79%, 23% 84%, 23% 89%, 23% 94%, 23% 98%, 23% 102%, 20% 105%, 14% 104%, 18% 98%, 18% 93%, 17% 81%, 16% 74%, 16% 69%, 15% 59%, 16% 53%, 17% 44%, 15% 50%, 13% 57%);
+
+}
+
+#toggle-drawing{
+margin:10px auto;
+box-shadow:3px 3px 3px rgba(0, 0, 0, 0.2);
+width:100px;
+height:30px;
+padding-5px:5px;
+border-radius:10000px;
+color:red;
+cursor:pointer;
+transition:all 1s;
+font-weight:bold;
+}
+
+#toggle-drawing:hover{
+transform:scale(1.1);
+}
