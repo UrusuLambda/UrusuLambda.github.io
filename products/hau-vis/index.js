@@ -52,6 +52,16 @@ $(document).ready(function(){
 	canvas.setHeight(490);
 	canvas.setWidth(490);
 	canvas.renderAll();
+
+	
+	var customEvtHandler = function (evt) {
+	    this.contextContainer.fillStyle = 'white';
+	    this.contextContainer.fillRect(0, 0, canvas.width, canvas.height);
+	    console.log("beforerender");
+	};
+
+	canvas.on('before:render', customEvtHandler);
+
 	
 	$("#save-tweet-btn").on("click", function(){
 		canvas.idDrawingMode = false;
@@ -62,7 +72,7 @@ $(document).ready(function(){
 		    var numbers = $("#mask").css("clip-path").replace("polygon(", "").replace(/%/g,"").replace(")","").split(",");
 		    
 		    var w = 490,
-		    h = 467;		    
+		    h = 457;		    
 		    ctx.beginPath();
 		    
 		    var posstr = numbers[0];
