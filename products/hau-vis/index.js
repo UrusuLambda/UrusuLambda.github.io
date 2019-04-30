@@ -72,22 +72,22 @@ $(document).ready(function(){
 		    var numbers = $("#mask").css("clip-path").replace("polygon(", "").replace(/%/g,"").replace(")","").split(",");
 		    
 		    var w = 490,
-		    h = 467;		    
+		    h = 462;		    
 		    ctx.beginPath();
 		    
 		    var posstr = numbers[0];
 		    var nums = posstr.split(" ");
-		    ctx.moveTo(parseInt(nums[0]) * w / 200, (parseInt(nums[1])-5) * h / 200);
+		    ctx.moveTo(parseInt(nums[0]) * w / 200, (parseInt(nums[1])-2.5) * h / 200);
 		    
 		    for(var i = 1; i < numbers.length;i++){
 			var posstr = numbers[i];
 			var nums = posstr.split(" ");
-			ctx.lineTo(parseInt(nums[1]) * w / 200, (parseInt(nums[2])-5) * h / 200);
+			ctx.lineTo(parseInt(nums[1]) * w / 200, (parseInt(nums[2])-2.5) * h / 200);
 		    }
 		    
 		    posstr = numbers[0];
 		    nums = posstr.split(" ");
-		    ctx.lineTo(parseInt(nums[0]) * w / 200, (parseInt(nums[1])-5) * h / 200);
+		    ctx.lineTo(parseInt(nums[0]) * w / 200, (parseInt(nums[1])-2.5) * h / 200);
 		    ctx.closePath();		    
 		}
 		canvas.renderAll();
