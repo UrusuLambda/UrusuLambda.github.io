@@ -53,8 +53,11 @@
 	</div>
       </div>
       <div class="twitter-zone">
-	<textarea  id="tweet-textarea" class="hau-textarea" placeholder="ツイート内容" >ここが痛い!  #HauVis</textarea>
-	<button id="save-tweet-btn" class="btn tweet-btn"><i style="margin-right:10px;" class="fab fa-twitter"></i>画像保存してツイートする</button>
+	<textarea  id="tweet-textarea" class="hau-textarea" placeholder="ツイート内容" >ここが痛い!</textarea>
+	<div style="font-size:10px;color:gray;">直接は画像付きツイートできません.申し訳ありません</div>
+	<a onclick="return check();" id="target-a" >
+	  <button id="save-tweet-btn" class="btn tweet-btn"><i style="margin-right:10px;" class="fab fa-twitter"></i>画像保存.別途ツイートする</button>
+	</a>
       </div>
 
       <a href="https://twitter.com/intent/tweet?button_hashtag=HauVis&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #HauVisualizer</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

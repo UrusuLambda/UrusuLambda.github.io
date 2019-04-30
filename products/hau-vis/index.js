@@ -55,6 +55,7 @@ $(document).ready(function(){
 	$("#save-tweet-btn").on("click", function(){
 		var dfilename = canvas.toDataURL('png');
 
+		/*
 		$.ajax({url:'https://upload.twitter.com/1.1/media/upload.json',
 			    type:"POST",
 			    data:JSON.stringify({media_data:dfilename}),
@@ -62,19 +63,24 @@ $(document).ready(function(){
 			    //dataType: 'json',
 			    success:function(result) {
 			    console.log(result);
-			    
-			    $('<a>').attr({
-				    href: "https://twitter.com/share?url=https://urusulambda.github.io/products/custom-classifier/index.html&via=urusulambda&related=twitterapi,twitter&hashtags=CustomClassifier",
-					target : "_blank"
-					})[0].click(function(){
-						$('<a>').attr({
-							href: dfilename,
-							    download:"bodymap.png" 
-							    })[0].click();
-					    });
-			    
-			}});
+		*/    
+
+		$('<a>').attr({
+			href: dfilename,
+			    download:"bodymap.png" 
+			    })[0].click();
+		//});
 		
-	    });
+		//}});
+    
+    });
 
     });
+
+function check(target){
+    var text = encodeURI($("#tweet-textarea").val());
+    $("#target-a").attr("href","https://twitter.com/share?text="+text+"&url=https://urusulambda.github.io/products/hau-vis/index.html&via=urusulambda&related=twitterapi,twitter&hashtags=HauVis");
+    $("#target-a").attr("target","_blank");
+    console.log("check");
+    return true;
+}
