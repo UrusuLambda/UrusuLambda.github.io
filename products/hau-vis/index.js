@@ -25,7 +25,8 @@ $(document).ready(function(){
 	    });
 	
 	canvas = new fabric.Canvas('canvas', {
-		isDrawingMode: true
+		isDrawingMode: true,
+		backgroundColor: 'rgb(255,255,255)'
           });
 	fabric.Object.prototype.transparentCorners = false;
 	//canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
@@ -53,26 +54,43 @@ $(document).ready(function(){
 	canvas.renderAll();
 	
 	$("#save-tweet-btn").on("click", function(){
-		var dfilename = canvas.toDataURL('png');
+		canvas.idDrawingMode = false;
 
-		/*
-		$.ajax({url:'https://upload.twitter.com/1.1/media/upload.json',
-			    type:"POST",
-			    data:JSON.stringify({media_data:dfilename}),
-			    //contentType: 'application/json; charset=utf-8',
-			    //dataType: 'json',
-			    success:function(result) {
-			    console.log(result);
-		*/    
+		canvas.clipTo = function (ctx){
+		    ctx.strokeStyle = '#999999';
+		    
+		    var numbers = $("#mask").css("clip-path").replace("polygon(", "").replace(/%/g,"").replace(")","").split(",");
+		    
+		    var w = 490,
+		    h = 467;		    
+		    ctx.beginPath();
+		    
+		    var posstr = numbers[0];
+		    var nums = posstr.split(" ");
+		    ctx.moveTo(parseInt(nums[0]) * w / 200, parseInt(nums[1]) * h / 200);
+		    
+		    for(var i = 1; i < numbers.length;i++){
+			var posstr = numbers[i];
+			var nums = posstr.split(" ");
+			console.log(nums);
+			ctx.lineTo(parseInt(nums[1]) * w / 200, parseInt(nums[2]) * h / 200);
+			console.log(parseInt(nums[1]) * w / 200 + " ,"  + parseInt(nums[2]) * h / 200);
+		    }
+		    
+		    posstr = numbers[0];
+		    nums = posstr.split(" ");
+		    ctx.lineTo(parseInt(nums[0]) * w / 200, parseInt(nums[1]) * h / 200);
+		    ctx.closePath();		    
+		}
+		canvas.renderAll();
+
+		var dfilename = canvas.toDataURL('png');
 
 		$('<a>').attr({
 			href: dfilename,
 			    download:"bodymap.png" 
 			    })[0].click();
-		//});
 		
-		//}});
-    
     });
 
     });
