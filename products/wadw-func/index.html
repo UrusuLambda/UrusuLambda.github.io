@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <title>WaduFunction</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP" rel="stylesheet">
+
+    <!-- External Library -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <!-- Internal Library -->
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="index.js"></script>
+
+ 
+  </head>
+  <body>
+    <div class="content-scroller">
+    <div class="main">
+      <h1 class="main-title wadu-font">WaduFunction</h1>
+      <div class="main-subtitle wadu-font">
+	Show how you feel when you pay
+      </div>
+      <div style="margin:30px auto 0px auto;display:table;">
+      <div class="main-subbio">
+	By <a href="https://urusulambda.wordpress.com" style="text-shadow:none;color:inherit;text-decoration:none;">Urusu Lambda
+	<img style="border-radius:50%;" width="32px" height="32px" src="https://avatars0.githubusercontent.com/u/34958002"></img>
+	</a>
+      </div>
+      </div>
+    </div>
+    <div class="detail wadu-font">
+      値段に応じた嬉しさを記入してください.<br>
+      その後ツイートを押せば、完成です.
+      <div class="detail-twitter-mark">
+	<i class="fab fa-twitter"></i>
+      </div>
+      <div class="canvas-zone">
+	<!-- HTML >
+	<div id="chartdiv"></div>
+
+	<style>
+	  #chartdiv {
+	  width: 60%;
+	  height: 400px;
+	  margin:auto;
+	  }
+	</style>
+	
+	<script src="https://www.amcharts.com/lib/4/core.js"></script>
+	<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+	<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+	<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+	<script src="https://www.amcharts.com/lib/3/amstock.js"></script>	
+	<script src="https://www.amcharts.com/lib/3/xy.js"></script-->
+
+	<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+	<!-- Chart code -->
+	<!--script>
+
+	</script>
+
+	<div style="display:table;margin:auto;">
+	  <div style="display:table-row;">
+	    <div style="display:table-cell;padding:5px 10px;vertical-align:middle;">
+	      <input placeholder="target">
+	    </div>
+	    <div style="display:table-cell;padding:5px 10px;vertical-align:middle;">
+	      <input placeholder="pay">
+	    </div>
+	    <div style="display:table-cell;padding:5px 10px;vertical-align:middle;">
+	      <input placeholder="value">
+	    </div>
+	    <div style="display:table-cell;padding:5px 10px;vertical-align:middle;">
+	      <button class="btn add-btn">追加</button>
+	    </div>
+	  </div>
+	</div-->
+
+      </div>
+      <div class="twitter-zone">
+	<textarea class="wadu-textarea" placeholder="ツイート内容" >私の費用対満足! #WaduFunction #WaduViz</textarea>
+	<button class="btn tweet-btn"><i style="margin-right:10px;" class="fab fa-twitter"></i>ツイートする</button>
+      </div>
+
+      <a href="https://twitter.com/intent/tweet?button_hashtag=WaduFunction&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #WaduFunction</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    </div>
+  </body>
+</html>
