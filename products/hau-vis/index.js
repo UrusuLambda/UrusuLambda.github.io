@@ -72,9 +72,7 @@ $(document).ready(function(){
 		    for(var i = 1; i < numbers.length;i++){
 			var posstr = numbers[i];
 			var nums = posstr.split(" ");
-			console.log(nums);
 			ctx.lineTo(parseInt(nums[1]) * w / 200, parseInt(nums[2]) * h / 200);
-			console.log(parseInt(nums[1]) * w / 200 + " ,"  + parseInt(nums[2]) * h / 200);
 		    }
 		    
 		    posstr = numbers[0];
@@ -84,12 +82,15 @@ $(document).ready(function(){
 		}
 		canvas.renderAll();
 
-		var dfilename = canvas.toDataURL('png');
+		var dfilename = canvas.toDataURL('jpg');
 
 		$('<a>').attr({
 			href: dfilename,
-			    download:"bodymap.png" 
-			    })[0].click();
+			    download:"bodymap.jpg" 
+			    })[0].click(function(){
+				    canvas.clipTo = function(ctx){};
+				    canvas.reanderAll();
+				});
 		
     });
 
@@ -99,6 +100,5 @@ function check(target){
     var text = encodeURI($("#tweet-textarea").val());
     $("#target-a").attr("href","https://twitter.com/share?text="+text+"&url=https://urusulambda.github.io/products/hau-vis/index.html&via=urusulambda&related=twitterapi,twitter&hashtags=HauVis");
     $("#target-a").attr("target","_blank");
-    console.log("check");
     return true;
 }
