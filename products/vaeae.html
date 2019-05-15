@@ -1,0 +1,213 @@
+<html>
+  <head>
+    <title>VAE & AE - Urusu Lambda Laboratory -</title>
+    <meta name="description" content="VAE と AEの中間層を可視化しただけ. MNISTデータを学習しているときにどのように遷移していくかを確認します.">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" async
+	    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123328586-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-123328586-1');
+</script>
+
+  </head>
+  <body style="width:100%;height:100%;background-color:rgb(220, 220, 220);padding:0px;margin:0px;">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:black!important;color:white;">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a style="font-family: 'Kaushan Script', cursive;color:white;" class="nav-link" href="../index.html">ULL Top<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+    <div style="font-family: 'Kaushan Script', cursive;width:100%;height:50%;background-color:rgb(49, 50, 51);min-height:300px;">
+      <div style="text-align:center;width:100%;padding-top:100px;font-size:60px;color:white;font-weight:bold;"> VAE & AE</div>
+      <div style="text-align:center;width:100%;font-family: 'Kaushan Script', cursive;color:white;">Code for Visualizing Variational AutoEncoder (& AutoEncoder)'s hiden layer.</div>
+      
+      <div style="text-align:center;width:100%;font-family: 'Kaushan Script', cursive;color:white;">Github Page : <a href="https://github.com/UrusuLambda/">https://github.com/UrusuLambda/</a></div>
+    </div>
+    <div>
+      <div class="container-fluid">
+      <div class="row">
+	<nav class="col-md-2 d-none d-md-block bg-light sidebar" style="background-color:transparent!important;">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="true" aria-controls="collapseExample1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                  What is it?
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  Visualize Results <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  Code <span class="sr-only">(current)</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" style="padding:0px;background-color:white;">
+	  <div id="accordion">
+	    <div class="card" style="border:none;">
+	      <div class="collapse show" id="collapseExample1" style="background-color:white;width:100%;height:100%;" data-parent="#accordion">
+		<div>
+		  <h1>What is This?</h1>
+		  <p>
+		    VAE(とAE)の中間層の状態を見てみたいなと思い、可視化してgifにしました.<br>
+		    以前からVAEでmnistの複数の数字を入れたらわかりにくいと感じていたので、1文字で学習させています.<br>
+		  </p>
+		  <p>
+		    可視化コードを加えただけですが「コード」のタブにソースコードを置いておきました.
+		    使いまわせる方がいると幸いです.
+		  </p>
+		  <p>
+		    gifにはImageMagickをインストールして以下でgif化
+		  </p>
+		  <div style="background-color:rgb(51, 50, 49);color:white;border-radius:10px;padding:10px;margin:30px auto;">
+		    convert -delay 10 -loop 0 frame_*.png ae.gif
+		  </div>
+		</div>
+	      </div>
+	    </div>
+	    <div class="card" style="border:none;">
+	      <div class="collapse" id="collapseExample2" data-parent="#accordion">
+		<p>
+		  下記では、全て中間層(隠れ層)を2次元にしています.
+		</p>
+		<h1>VAE Visualize Results</h1>
+		<div style="width:80%;margin:auto;">
+		  <h1>VAE with 10 digits</h1>
+		  <p>
+		    まずは通常の10種類のmnistの学習です.少しずつ真ん中に全体の山が寄って行きます.<br>
+		    可視化に使用している画像はテストデータで学習には使用していません.
+		  </p>
+		  <div style="width:80%;margin:auto;text-align:center;">
+		    <img width="400px" src="img/vae10.gif">
+		  </div>
+		  <h1>VAE with 1 digits</h1>
+		  <p>
+		    次に数字の3の学習だけを行い、テスト画像にも3の数字だけを入力しています.<br>
+		    こころなしか周辺にあまりお目にかからない崩れた3が来ていて、真ん中にはよくみる3が来ているように見えなくもない...<br>
+		    全体的にガウス分布になろうとしている感じがあります.
+		  </p>
+		  <div style="width:80%;margin:auto;text-align:center;">
+		    <img width="400px" src="img/vae1_3.gif">
+		  </div>
+		  <h1>VAE with 1 digits & other digits</h1>
+		  <p>
+		    次に数字の3の学習だけを行い、テスト画像には3の数字と他の数字も入力として入れてみてます.<br>
+		    私の期待では,3以外の数字は全て外側に来て内側は3しかない状態になることを思い描いていましたが<br>
+		    やはり潜在変数2が少なすぎるせいかそこまで上手くは行きませんでした...<br>
+		    <br>
+		    2とか6とかがやや侵入してきています.
+		  </p>
+		  <div style="width:80%;margin:auto;text-align:center;">
+		    <img width="400px" src="img/vae1.gif">
+		  </div>
+		</div>
+		<h1>AE Visualize Results</h1>
+		<div style="width:80%;margin:auto;">
+		  <h1>AE with 10 digits</h1>
+		  <p>
+		    まずは通常の10種類のmnistの学習です.0~1の間に収まっているのはsigmoidのおかげです.<br>
+		    ReLuにしているものをあまり見かけなかったのでここのままにしています.
+		  </p>
+		  <div style="width:80%;margin:auto;text-align:center;">
+		    <img width="400px" src="img/ae10.gif">
+		  </div>
+		  <h1>AE with 1 digits (FAIL)</h1>
+		  <p>
+		    次に3だけにしましたが、どうも上手く学習されなくなった気がします.<br>
+		    原因はまだ調べているところです.特にできなくなる理由は見つからない気がするのですが...
+		  </p>
+		  <div style="width:80%;margin:auto;text-align:center;">
+		    <img width="400px" src="img/ae1.gif">
+		  </div>
+		</div>
+	      </div>
+	    </div>
+	    
+	    <div class="card" style="border:none;">
+	      <div class="collapse" id="collapseExample3" style="background-color:white;width:100%;height:100%;" data-parent="#accordion">
+		<p>
+		  コードの大部分は<a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/variational_autoencoder.py">aymericdamien</a>さんのコードをベースにしています.
+		  Gist等含めて右<a href="https://github.com/UrusuLambda/">UrusuLambda's Github</a><br>
+		</p>
+		<div>
+		  <div style="padding:20px;background-color:rgb(49, 50, 51);border-radius:10px;margin:10px;font-weight:bold;color:white;">
+		  <h1>Code (VAE just visualize 2d hidden layer. Multiple Digits)</h1>
+		  <p>
+		    10種類のMNISTをVAEで学習させているときのコードです.元のコードに可視化用のコードを加えて、中間層から値を取得して2Dにプロットしています.
+		  </p>
+		  </div>
+		  <p>
+		    <script src="https://gist.github.com/UrusuLambda/8d33f81c0f6e862599c1a0e60b1e9703.js"></script>
+		  </p>
+		</div>
+		<div>
+		  <div style="padding:20px;background-color:rgb(49, 50, 51);border-radius:10px;margin:10px;font-weight:bold;color:white;">
+		  <h1>Code (VAE just visualize 2d hidden layer. Single Digits)</h1>
+		  <p>
+		    1種類のMNISTをVAEで学習させているときのコードです.(大して一つめと変わりません)
+		  </p>
+		  </div>
+		  <p>
+		    <script src="https://gist.github.com/UrusuLambda/5d40484c4bd614044369db2a0ce0ac7a.js"></script>
+		  </p>
+		</div>
+		
+		<div>
+		  <div style="padding:20px;background-color:rgb(49, 50, 51);border-radius:10px;margin:10px;font-weight:bold;color:white;">
+		  <h1>Code (AE just visualize 2d hidden layer. 10 Digits)</h1>
+		  <p>
+		    10種類のMNISTをAEで学習させているときのコードです.(大して一つめと変わりません)
+		  </p>
+		  </div>
+		  <p>
+		    <script src="https://gist.github.com/UrusuLambda/1084a66270452f8e2b682f22dd87e650.js"></script>
+		  </p>
+		</div>
+			
+	      </div>
+	    </div>
+	      
+	  </div>
+	</main>
+      </div>
+      </div>
+    </div>
+</body>
+</html>
