@@ -1,0 +1,188 @@
+<html style="width:100%;height:100%;padding:0px;margin:0px;">
+  <head>
+    <title>Thothgoritm - Urusu Lambda Laboratory</title>
+    <meta name="description" content="アルゴリズムの可視化を行うページです.様々な分野のアルゴリズムを可視化してインタラクティブに触れるページを用意していきます.">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123328586-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'UA-123328586-1');
+    </script>
+    
+    <link rel="stylesheet" type="text/css" href="thothgorithm.css">
+    <script src="thothgorithm.js"></script>
+    
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@urusulambda" />
+    <meta name="twitter:creator" content="@urusulambda" />
+    <meta name="twitter:title" content="Urusu Lambda Laboratory">
+    <meta name="twitter:description" content="UrusuLambdaのいろいろ実験場.WebサービスやDeepLearing、ロボットなどのソースコードや実験を残していこうと思います.">
+    <meta name="twitter:image" content="https://urusulambda.github.io/img/urusulambdalaboratory.png">
+    <meta property="og:url" content="https://urusulambda.github.io/" />
+    <meta property="og:title" content="Urusu Lambda Laboratory" />
+    <meta property="og:description" content="UrusuLambdaのいろいろ実験場.WebサービスやDeepLearing、ロボットなどのソースコードや実験を残していこうと思います." />
+    <meta property="og:image" content="https://urusulambda.github.io/img/urusulambdalaboratory.png" />
+  </head>
+  <body style="width:100%;height:100%;background-color:rgb(220, 220, 220);padding:0px;margin:0px;">
+    <div style="padding:50px;padding-bottom:0px;font-family: 'Kaushan Script', cursive;width:100%;background-color:rgb(207, 57, 54);min-height:300px;text-align:center;margin:auto;">
+      <a style="text-decoration:none;color:inherit" href="https://urusulambda.github.io/"><div style=";display: table;background-color:rgb(50, 50, 50);color:white;left:20px;top:20px;border-radius:1000px;width:50px;height:50px;"><div style="display: table-cell;vertical-align: middle;font-size:10px;font-weight:bold;">ULL Top</div></div></a>
+      <img width="100px" height="100px" src="http://img.thothchildren.com/thothchildren.png" style="border-radius:50px;margin-top:0px;margon-bottom:50px;border:5px white solid;"></img>
+      <div style="text-align:center;width:100%;font-size:60px;color:white;font-weight:bold;">Thothgorithm</div>
+      <div style="text-align:center;width:100%;font-family: 'Kaushan Script', cursive;color:white;">Interactive visualizer of Algorithms by <a style="text-decoration:none;color:inherit" href="http://www.thothchildren.com/"><font color="black">ThothChildren</font></a> with <a style="text-decoration:none;color:inherit" href="https://urusulambda.wordpress.com/"><font color="black">Urusu Lambda</font></a></div>
+
+      <div style="margin:auto;width:100%;text-align:center;padding:20px;">
+	<a href="https://twitter.com/UrusuLambda?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @UrusuLambda</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	
+	<!-- Place this tag where you want the button to render. -->
+	<a class="github-button" href="https://github.com/UrusuLambda" aria-label="Follow @UrusuLambda on GitHub">Follow @UrusuLambda</a>
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+	
+      </div>
+      <div style="padding:10px;">
+	<script src="https://apis.google.com/js/platform.js"></script>
+	<div class="g-ytsubscribe" data-channelid="UCAyKKEgfsAFJTzvasQHw7gw" data-layout="full" data-theme="dark" data-count="hidden"></div>
+      </div>
+
+    </div>
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light" data-toggle="affix" style="background-color:white!important;box-shadow:0px 3px 5px rgba(0,0,0,0.2);">
+    <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+      <a class="navbar-brand" style="font-family: 'Kaushan Script', cursive;" href="#">ULL</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-center" id="navbarsExample11">
+            <ul class="navbar-nav">
+                <li class="nav-item li-all active">
+                    <a class="nav-link" href="#">All</a>
+                </li>
+                <li class="nav-item li-planning">
+                    <a class="nav-link" href="#">Planning</a>
+                </li>
+                <li class="nav-item li-deeplearning">
+                    <a class="nav-link" href="#">DeepLearning</a>
+                </li>
+                <li class="nav-item li-tracking">
+                    <a class="nav-link" href="#">Tracking</a>
+                </li>
+                <li class="nav-item li-search">
+                    <a class="nav-link" href="#">Search</a>
+                </li>
+                <li class="nav-item li-simulator">
+                    <a class="nav-link" href="#">Simulator</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+	    <!-- One element-->
+            <div class="col-md-4 ul-deeplearning">
+              <div class="card mb-4 shadow-sm">
+                <a href="#"><img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="object-fit:cover;height: 225px; width: 100%; display: block;" src="../img/notfound.png" data-holder-rendered="true">
+		</a>
+                <div class="card-body">
+                  <p class="card-text"><div><b>AutoEncoder & Variational AutoEncoder</b></div>AutoEncoderとVariationalAutoEncoderの可視化を行ったページです..</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="#"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                    </div>
+                    <small class="text-muted">DeepLearning</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+	    <!-- One element-->
+            <div class="col-md-4 ul-deeplearning">
+              <div class="card mb-4 shadow-sm">
+                <a href="#"><img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="object-fit:cover;height: 225px; width: 100%; display: block;" src="../img/notfound.png" data-holder-rendered="true">
+		</a>
+                <div class="card-body">
+                  <p class="card-text"><div><b>MNIST Series</b></div>MNISTを使った様々な機械学習タスクを一覧性を上げて用意しました.興味あるものを見つけてください.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="#"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                    </div>
+                    <small class="text-muted">DeepLearning</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+	    <!-- One element-->
+            <div class="col-md-4 ul-tracking">
+              <div class="card mb-4 shadow-sm">
+                <a href="#"><img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="object-fit:cover;height: 225px; width: 100%; display: block;" src="../img/notfound.png" data-holder-rendered="true">
+		</a>
+                <div class="card-body">
+                  <p class="card-text"><div><b>Particle Filter</b></div>観測データを使って逐次的モンテカルロ法による推定を行います.つまりは候補になる点をいっぱいばらまいて、観測とあってそうな点をいっぱい残す方法です.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="#"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                    </div>
+                    <small class="text-muted">Tracking</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+	    <!-- One element-->
+            <div class="col-md-4 ul-planning">
+              <div class="card mb-4 shadow-sm">
+                <a href="thothgorithm/rrt.html"><img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="object-fit:cover;height: 225px; width: 100%; display: block;" src="thothgorithm/images/rrt.png" data-holder-rendered="true">
+		</a>
+                <div class="card-body">
+                  <p class="card-text"><div><b>RRT</b></div>RRT(Rapidly exploring random tree)によるパスの探索です.スタートからゴールまで障害物を避けながらいくパスを見つけます.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="thothgorithm/rrt.html"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                    </div>
+                    <small class="text-muted">Planning</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+	    <!-- One element-->
+            <div class="col-md-4 ul-simulator">
+              <div class="card mb-4 shadow-sm">
+                <a href="thothgorithm/particle-method.html"><img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="object-fit:cover;height: 225px; width: 100%; display: block;" src="img/webball.png" data-holder-rendered="true">
+		</a>
+                <div class="card-body">
+                  <p class="card-text"><div><b>Particle Method</b></div>粒子法とWebGLを用いた流体のWeb上でのSimulatorです.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="thothgorithm/particle-method.html"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                    </div>
+                    <small class="text-muted">Simulator</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </div>
+</div>
+
+
+
+  </body>
+</html>
