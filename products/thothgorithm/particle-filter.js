@@ -425,6 +425,7 @@ $(document).ready(function(){
 
 	$("#clear-btn").on("click", function(){
 		console.log("clear");
+		resetBoxes();
 		init();
 	    });
 
