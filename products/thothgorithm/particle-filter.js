@@ -408,6 +408,7 @@ function resetBoxes(){
 	//box.applyImpulse( effect, offset );
 
 	box.position.y += 100 + Math.random() * 50;
+	box.__dirtyPosition = true;
     }
 }
 
