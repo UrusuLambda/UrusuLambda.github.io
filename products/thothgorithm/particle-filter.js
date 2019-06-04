@@ -314,9 +314,9 @@ function init() {
 				box_material
 			);
 			box.position.set(
-				Math.random() * 50 - 25,
-				10 + Math.random() * 5,
-				Math.random() * 50 - 25
+				Math.random() * 250 - 25,
+				100 + Math.random() * 150,
+				Math.random() * 250 - 25
 			);
 			box.rotation.set(
 				Math.random() * Math.PI * 2,
@@ -324,9 +324,9 @@ function init() {
 				Math.random() * Math.PI * 2
 			);
 			box.scale.set(
-				Math.random() * 1 + .5,
-				Math.random() * 1 + .5,
-				Math.random() * 1 + .5
+				Math.random() * 10 + .5,
+				Math.random() * 10 + .5,
+				Math.random() * 10 + .5
 			);
 			box.castShadow = true;
 			scene.add( box );
