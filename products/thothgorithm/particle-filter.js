@@ -381,25 +381,21 @@ function onWindowResize() {
 
 function animate() {
 
-    if(rrt.start){
-	var fps = parseFloat($("#fps").val());
-	setTimeout( function() {
-		requestAnimationFrame( animate );
-	    }, 1000 / fps );
-    }else{
-	requestAnimationFrame( animate );
-    }
+    requestAnimationFrame( animate );
     render();
 }
 
 function render() {
     controls.update();
     renderer.render( scene, camera );
+
+    /*
     var result = rrt.update();
     if(result){
 	rrt.drawAns();
 	rrt.start = false;
     }
+    */
 }
 
 $(document).ready(function(){
@@ -410,7 +406,7 @@ $(document).ready(function(){
 	$("#start-btn").on("click", function(){
 		console.log("start");
 		//rrt.run();
-		rrt.start = true;
+		//rrt.start = true;
 	    });
 
 	$("#clear-btn").on("click", function(){
