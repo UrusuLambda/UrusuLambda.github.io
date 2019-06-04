@@ -7,8 +7,8 @@ var goal_max = limit_max * 2;
 var obstacle_size = 5;
 var goal_pos = new THREE.Vector3(goal_max, goal_max, goal_max);
 
-Physijs.scripts.worker = '3rdparty/Physijs/physijs_worker.js';
-Physijs.scripts.ammo = '3rdparty/Physijs/examples/js/ammo.js';
+Physijs.scripts.worker = 'physijs_worker.js';
+Physijs.scripts.ammo = 'examples/js/ammo.js';
 
 var initScene, render, applyForce, setMousePosition, mouse_position,
     ground_material, box_material, loader,
