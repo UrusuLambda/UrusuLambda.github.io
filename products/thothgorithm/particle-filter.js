@@ -334,7 +334,7 @@ function init() {
 		}
 
     ground = new Physijs.BoxMesh(
-				 new THREE.BoxGeometry(100, 1, 100),
+				 new THREE.BoxGeometry(300, 1, 300),
 				 ground_material,
 				 0 // mass
 				 );
@@ -398,6 +398,19 @@ function render() {
     */
 }
 
+function resetBoxes(){
+
+    for ( var i = 0; i < boxes.length; i++ ) {
+	box = boxes[i];
+	//distance = mouse_position.distanceTo( box.position ),
+	//effect = mouse_position.clone().sub( box.position ).normalize().multiplyScalar( strength / distance ).negate(),
+	//offset = mouse_position.clone().sub( box.position );
+	//box.applyImpulse( effect, offset );
+
+	box.position.y += 100 + Math.random() * 50;
+    }
+}
+
 $(document).ready(function(){
 	init();
 	animate();
@@ -405,6 +418,7 @@ $(document).ready(function(){
 
 	$("#start-btn").on("click", function(){
 		console.log("start");
+		resetBoxes();
 		//rrt.run();
 		//rrt.start = true;
 	    });
